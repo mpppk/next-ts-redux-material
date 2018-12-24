@@ -1,9 +1,28 @@
-import Link from 'next/link'
-import Layout from '../components/Layout';
+import React from 'react';
+import { connect } from 'react-redux';
 
-export default () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p><Link href='/about'><a>About</a></Link></p>
-  </Layout>
-)
+import Page from '../components/page';
+
+class Index extends React.Component {
+  static async getInitialProps(props) {
+    const { isServer } = props.ctx;
+    // const { store, isServer } = props.ctx;
+    // store.dispatch(tickClock(isServer))
+
+    // if (!store.getState().placeholderData) {
+    //   store.dispatch(loadData());
+    // }
+
+    return { isServer };
+  }
+
+  // componentDidMount() {
+  //   this.props.dispatch(startClock());
+  // }
+
+  render() {
+    return <Page title="Index Page" linkTo="/other" NavigateTo="Other Page" />;
+  }
+}
+
+export default connect()(Index);
