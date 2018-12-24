@@ -6,14 +6,19 @@ export interface ICounterAmountPayload {
 
 const counterActionCreatorFactory = actionCreatorFactory('COUNTER');
 
-export interface ICounterActionCreators {
-  clickIncrementButton: ActionCreator<undefined>;
-  clickDecrementButton: ActionCreator<undefined>;
-  clickAsyncIncrementButton: ActionCreator<undefined>;
-  requestAmountChanging: ActionCreator<ICounterAmountPayload>;
-}
+type ClickActionName =
+  | 'clickIncrementButton'
+  | 'clickDecrementButton'
+  | 'clickAsyncIncrementButton';
 
-export const counterActionCreators: ICounterActionCreators = {
+export type CounterActionCreators = Record<
+  ClickActionName,
+  ActionCreator<undefined>
+> & {
+  requestAmountChanging: ActionCreator<ICounterAmountPayload>;
+};
+
+export const counterActionCreators: CounterActionCreators = {
   clickAsyncIncrementButton: counterActionCreatorFactory<undefined>(
     'CLICK_ASYNC_INCREMENT_BUTTON'
   ),
