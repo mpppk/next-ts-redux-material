@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { increment } from '../actions';
+import { counterActionCreators } from '../actions';
 import Page from '../components/page';
 
 class Index extends React.Component {
   static async getInitialProps(props) {
     const { store, isServer } = props.ctx;
-    store.dispatch(increment());
+    store.dispatch(counterActionCreators.requestAmountChanging({ amount: 1 }));
     return { isServer };
   }
 

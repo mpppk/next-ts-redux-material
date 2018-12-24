@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { counterActionCreators, decrement, increment } from '../actions';
+import { counterActionCreators } from '../actions';
 
 interface ICounterProps {
   count: number;
-  increment: any;
-  decrement: any;
+  clickIncrementButton: any;
+  clickDecrementButton: any;
   clickAsyncIncrementButton: any; // FIXME
 }
 
@@ -33,8 +33,8 @@ class Counter extends Component<ICounterProps, any> {
         <h1>
           Count: <span>{count}</span>
         </h1>
-        <button onClick={this.props.increment}>+1</button>
-        <button onClick={this.props.decrement}>-1</button>
+        <button onClick={this.props.clickIncrementButton}>+1</button>
+        <button onClick={this.props.clickDecrementButton}>-1</button>
         <button onClick={this.props.clickAsyncIncrementButton}>+1 later</button>
       </div>
     );
@@ -44,7 +44,6 @@ class Counter extends Component<ICounterProps, any> {
 const mapStateToProps = ({ count }) => ({ count });
 const mapDispatchToProps = dispatch => {
   return {
-    ...bindActionCreators({ increment, decrement }, dispatch),
     ...bindActionCreators(counterActionCreators as {}, dispatch) // FIXME
   };
 };
