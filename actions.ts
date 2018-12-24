@@ -1,13 +1,16 @@
-export const actionTypes = {
+import actionCreatorFactory from 'typescript-fsa';
+const actionCreator = actionCreatorFactory();
+
+export enum actionTypes {
   // FAILURE: 'FAILURE',
-  INCREMENT: 'INCREMENT',
-  DECREMENT: 'DECREMENT'
+  DECREMENT = 'DECREMENT',
+  INCREMENT = 'INCREMENT'
   // RESET: 'RESET',
   // LOAD_DATA: 'LOAD_DATA',
   // LOAD_DATA_SUCCESS: 'LOAD_DATA_SUCCESS',
   // START_CLOCK: 'START_CLOCK',
   // TICK_CLOCK: 'TICK_CLOCK'
-};
+}
 
 // export function failure (error) {
 //   return {
@@ -16,13 +19,16 @@ export const actionTypes = {
 //   }
 // }
 
-export function increment() {
-  return { type: actionTypes.INCREMENT };
-}
+// export function increment() {
+//   return { type: actionTypes.INCREMENT };
+// }
 
-export function decrement() {
-  return { type: actionTypes.DECREMENT };
-}
+export const increment = actionCreator(actionTypes.INCREMENT);
+export const decrement = actionCreator(actionTypes.DECREMENT);
+
+// export function decrement() {
+//   return { type: actionTypes.DECREMENT };
+// }
 
 // export function reset () {
 //   return { type: actionTypes.RESET }
