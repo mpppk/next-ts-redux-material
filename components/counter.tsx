@@ -11,18 +11,6 @@ interface ICounterProps {
 }
 
 class Counter extends Component<ICounterProps, any> {
-  // increment = () => {
-  //   this.props.dispatch(increment());
-  // };
-  //
-  // decrement = () => {
-  //   this.props.dispatch(decrement());
-  // };
-
-  // reset = () => {
-  //   this.props.dispatch(reset());
-  // };
-
   render() {
     const { count } = this.props;
     return (
@@ -37,7 +25,6 @@ class Counter extends Component<ICounterProps, any> {
         </h1>
         <button onClick={this.props.increment}>+1</button>
         <button onClick={this.props.decrement}>-1</button>
-        {/*<button onClick={this.reset}>Reset</button>*/}
       </div>
     );
   }
