@@ -1,6 +1,6 @@
 import actionCreatorFactory, { ActionCreator } from 'typescript-fsa';
 
-export interface ICounterAmountPayload {
+export interface IRequestAmountChangingPayload {
   amount: number;
 }
 
@@ -15,7 +15,7 @@ export type CounterActionCreators = Record<
   ClickActionName,
   ActionCreator<undefined>
 > & {
-  requestAmountChanging: ActionCreator<ICounterAmountPayload>;
+  requestAmountChanging: ActionCreator<IRequestAmountChangingPayload>;
 };
 
 export const counterActionCreators: CounterActionCreators = {
@@ -28,15 +28,20 @@ export const counterActionCreators: CounterActionCreators = {
   clickIncrementButton: counterActionCreatorFactory<undefined>(
     'CLICK_INCREMENT_BUTTON'
   ),
-  requestAmountChanging: counterActionCreatorFactory<ICounterAmountPayload>(
-    'REQUEST_AMOUNT_CHANGING'
-  )
+  requestAmountChanging: counterActionCreatorFactory<
+    IRequestAmountChangingPayload
+  >('REQUEST_AMOUNT_CHANGING')
 };
 
+export interface IRequestAmountChangingWithSleepPayload
+  extends IRequestAmountChangingPayload {
+  sleep: number;
+}
+
 export const counterAsyncActionCreators = {
-  changeAmountAsync: counterActionCreatorFactory.async<
-    ICounterAmountPayload,
-    any,
+  changeAmountWithSleep: counterActionCreatorFactory.async<
+    IRequestAmountChangingWithSleepPayload,
+    IRequestAmountChangingPayload,
     any
-  >('CHANGE_AMOUNT_ASYNC')
+  >('REQUEST_AMOUNT_CHANGING_WITH_SLEEP')
 };
