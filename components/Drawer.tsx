@@ -1,15 +1,9 @@
 import Button from '@material-ui/core/Button';
-import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import { withStyles } from '@material-ui/core/styles';
-import MailIcon from '@material-ui/icons/Mail';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import PropTypes from 'prop-types';
 import React from 'react';
+import FullList from './drawer/FullList';
 import SideList from './drawer/SideList';
 
 const styles = {
@@ -36,34 +30,6 @@ class TemporaryDrawer extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
-
-    const fullList = (
-      <div className={classes.fullList}>
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-      </div>
-    );
-
     return (
       <div>
         <Button onClick={this.toggleDrawer('left', true)}>Open Left</Button>
@@ -94,7 +60,7 @@ class TemporaryDrawer extends React.Component {
             onClick={this.toggleDrawer('top', false)}
             onKeyDown={this.toggleDrawer('top', false)}
           >
-            {fullList}
+            <FullList />
           </div>
         </Drawer>
         <Drawer
@@ -108,7 +74,7 @@ class TemporaryDrawer extends React.Component {
             onClick={this.toggleDrawer('bottom', false)}
             onKeyDown={this.toggleDrawer('bottom', false)}
           >
-            {fullList}
+            <FullList />
           </div>
         </Drawer>
         <Drawer
