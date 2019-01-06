@@ -5,6 +5,8 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import Toolbar from '@material-ui/core/Toolbar/Toolbar';
 import Typography from '@material-ui/core/Typography/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
+import React from 'react';
+import MyDrawer from './Drawer';
 
 const styles = {
   grow: {
@@ -19,28 +21,49 @@ const styles = {
   }
 };
 
-const ButtonAppBar = props => {
-  // tslint:disable-line
-  const { classes } = props;
-  return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="Menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" color="inherit" className={classes.grow}>
-            News
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
-};
+class MyAppBar extends React.Component<{ classes }> {
+  constructor() {
+    // @ts-ignore
+    super();
+  }
+  state = {
+    isDrawerOpen: false
+  };
 
-export default withStyles(styles)(ButtonAppBar);
+  toggleDrawer = open => () => {
+    this.setState({
+      isDrawerOpen: open
+    });
+  };
+
+  render() {
+    const { classes } = this.props;
+    return (
+      <div className={classes.root}>
+        <AppBar position="static">
+          <MyDrawer
+            open={this.state.isDrawerOpen}
+            onClose={this.toggleDrawer(false)}
+            onClickSideList={this.toggleDrawer(false)}
+          />
+          <Toolbar>
+            <IconButton
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="Menu"
+              onClick={this.toggleDrawer(true)}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" color="inherit" className={classes.grow}>
+              News
+            </Typography>
+            <Button color="inherit">Login</Button>
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
+}
+
+export default withStyles(styles)(MyAppBar);
