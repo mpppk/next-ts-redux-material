@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import Button from '@material-ui/core/Button/Button';
 import { counterActionCreators, CounterActionCreators } from '../actions';
+import Typography from '@material-ui/core/Typography/Typography';
 
 interface IStateProps {
   count: number;
@@ -29,12 +31,30 @@ class Counter extends Component<ICounterProps, any> {
         {/*padding: 0 0 20px 0;*/}
         {/*}*/}
         {/*`}</style>*/}
-        <h1>
+        <Typography variant="h4" gutterBottom>
           Count: <span>{count}</span>
-        </h1>
-        <button onClick={this.props.clickIncrementButton}>+1</button>
-        <button onClick={this.props.clickDecrementButton}>-1</button>
-        <button onClick={this.props.clickAsyncIncrementButton}>+1 later</button>
+        </Typography>
+        <Button
+          onClick={this.props.clickIncrementButton}
+          variant="contained"
+          color="primary"
+        >
+          +1
+        </Button>
+        <Button
+          onClick={this.props.clickDecrementButton}
+          variant="contained"
+          color="primary"
+        >
+          -1
+        </Button>
+        <Button
+          onClick={this.props.clickAsyncIncrementButton}
+          variant="contained"
+          color="primary"
+        >
+          +1 later
+        </Button>
       </div>
     );
   }
