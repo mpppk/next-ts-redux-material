@@ -14,13 +14,14 @@ const styles = {
   }
 };
 
+// tslint:disable-next-line variable-name
 const SideList: React.FunctionComponent<{ classes }> = props => {
   const { classes } = props;
   return (
     <div className={classes.list}>
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
+          <ListItem button={true} key={text}>
             <ListItemIcon>
               {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
             </ListItemIcon>
@@ -31,7 +32,7 @@ const SideList: React.FunctionComponent<{ classes }> = props => {
       <Divider />
       <List>
         {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
+          <ListItem button={true} key={text}>
             <ListItemIcon>
               {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
             </ListItemIcon>

@@ -25,15 +25,16 @@ const theme = createMuiTheme({
   }
 });
 
-export interface PageContext extends MuiThemeProviderProps {
+export interface IPageContext extends MuiThemeProviderProps {
   generateClassName: GenerateClassName<string>; // not sure what goes here
   sheetsRegistry: SheetsRegistry;
 }
 
-export default function(): PageContext {
+export default function(): IPageContext {
   return {
     children: undefined,
     // The standard class name generator.
+    // @ts-ignore FIXME
     generateClassName: createGenerateClassName(),
     // This is needed in order to deduplicate the injection of CSS in the page.
     sheetsManager: new Map(),

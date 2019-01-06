@@ -1,6 +1,6 @@
 import { Counter } from '../services/Counter';
 
-describe('woolf job', () => {
+describe('Counter', () => {
   const counter = new Counter();
   afterAll(async () => {
     counter.count = 0;

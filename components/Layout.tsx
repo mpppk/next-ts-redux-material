@@ -1,12 +1,13 @@
-import * as React from 'react';
-import Link from 'next/link';
 import Head from 'next/head';
+import Link from 'next/link';
+import * as React from 'react';
 
-type Props = {
+interface IProps {
   title?: string;
-};
+}
 
-const Layout: React.SFC<Props> = ({
+// tslint:disable-next-line variable-name
+const Layout: React.FunctionComponent<IProps> = ({
   children,
   title = 'This is the default title'
 }) => (

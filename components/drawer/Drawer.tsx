@@ -1,7 +1,7 @@
 import Drawer from '@material-ui/core/Drawer';
 import { withStyles } from '@material-ui/core/styles';
 import React from 'react';
-import SideList from './drawer/SideList';
+import SideList from './SideList';
 
 const styles = {};
 
@@ -11,6 +11,7 @@ export interface IMyDrawerProps {
   onClickSideList: () => void;
 }
 
+// tslint:disable-next-line variable-name
 const MyDrawer: React.FunctionComponent<IMyDrawerProps> = props => {
   const { open, onClose, onClickSideList } = props;
 
