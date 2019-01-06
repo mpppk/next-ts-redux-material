@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { connect } from 'react-redux';
 import AppBar from './AppBar';
 import Counter from './counter';
+import Drawer from './Drawer';
 
 function Page({ linkTo, NavigateTo, title }) {
   return (
@@ -11,6 +12,7 @@ function Page({ linkTo, NavigateTo, title }) {
       <Typography variant="h2" gutterBottom>
         {title}
       </Typography>
+      <Drawer />
       <nav>
         <Link href={linkTo}>
           <a>Navigate: {NavigateTo}</a>
