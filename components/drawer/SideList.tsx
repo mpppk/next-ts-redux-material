@@ -1,11 +1,11 @@
 import { withStyles } from '@material-ui/core';
-import Divider from '@material-ui/core/Divider/Divider';
 import List from '@material-ui/core/List/List';
 import ListItem from '@material-ui/core/ListItem/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText/ListItemText';
-import MailIcon from '@material-ui/icons/Mail';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
+import HomeIcon from '@material-ui/icons/Home';
+import InfoIcon from '@material-ui/icons/Info';
+import Link from 'next/link';
 import * as React from 'react';
 
 const styles = {
@@ -20,25 +20,22 @@ const SideList: React.FunctionComponent<{ classes }> = props => {
   return (
     <div className={classes.list}>
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button={true} key={text}>
+        <Link href={'/'}>
+          <ListItem button={true} key={'Home'}>
             <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              <HomeIcon />
             </ListItemIcon>
-            <ListItemText primary={text} />
+            <ListItemText primary={'Home'} />
           </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button={true} key={text}>
+        </Link>
+        <Link href={'/about'}>
+          <ListItem button={true} key={'About'}>
             <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              <InfoIcon />
             </ListItemIcon>
-            <ListItemText primary={text} />
+            <ListItemText primary={'About'} />
           </ListItem>
-        ))}
+        </Link>
       </List>
     </div>
   );

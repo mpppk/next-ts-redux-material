@@ -1,13 +1,10 @@
-import Link from 'next/link';
-import Layout from '../components/Layout';
-
+import Typography from '@material-ui/core/Typography/Typography';
+import AppBar from '../components/AppBar';
 export default () => (
-  <Layout title="About | Next.js + TypeScript Example">
-    <p>This is the about page</p>
-    <p>
-      <Link href="/">
-        <a>Go home</a>
-      </Link>
-    </p>
-  </Layout>
+  <div>
+    <AppBar />
+    <Typography variant="h2" gutterBottom={true}>
+      About
+    </Typography>
+  </div>
 );

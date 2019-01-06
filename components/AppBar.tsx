@@ -23,8 +23,8 @@ const styles = {
 
 // tslint:disable-next-line variable-name
 class MyAppBar extends React.Component<{ classes }> {
+  // tslint:disable-next-line member-access
   state = {
-    // tslint:disable-line member-access
     isDrawerOpen: false
   };
 
@@ -33,8 +33,8 @@ class MyAppBar extends React.Component<{ classes }> {
     super();
   }
 
+  // tslint:disable-next-line member-access
   render() {
-    // tslint:disable-line member-access
     const { classes } = this.props;
     return (
       <div className={classes.root}>
@@ -54,7 +54,7 @@ class MyAppBar extends React.Component<{ classes }> {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" color="inherit" className={classes.grow}>
-              News
+              Next.js+TypeScript+Redux+MUI DEMO
             </Typography>
             <Button color="inherit">Login</Button>
           </Toolbar>
