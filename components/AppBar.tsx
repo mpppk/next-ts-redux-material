@@ -6,7 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar/Toolbar';
 import Typography from '@material-ui/core/Typography/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 import React from 'react';
-import MyDrawer from './Drawer';
+import MyDrawer from './drawer/Drawer';
 
 const styles = {
   grow: {
@@ -21,22 +21,20 @@ const styles = {
   }
 };
 
+// tslint:disable-next-line variable-name
 class MyAppBar extends React.Component<{ classes }> {
+  state = {
+    // tslint:disable-line member-access
+    isDrawerOpen: false
+  };
+
   constructor() {
     // @ts-ignore
     super();
   }
-  state = {
-    isDrawerOpen: false
-  };
-
-  toggleDrawer = open => () => {
-    this.setState({
-      isDrawerOpen: open
-    });
-  };
 
   render() {
+    // tslint:disable-line member-access
     const { classes } = this.props;
     return (
       <div className={classes.root}>
@@ -64,6 +62,12 @@ class MyAppBar extends React.Component<{ classes }> {
       </div>
     );
   }
+
+  private toggleDrawer = open => () => {
+    this.setState({
+      isDrawerOpen: open
+    });
+  };
 }
 
 export default withStyles(styles)(MyAppBar);
