@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import Button from '@material-ui/core/Button/Button';
 import { counterActionCreators, CounterActionCreators } from '../actions';
+import Typography from '@material-ui/core/Typography/Typography';
 
 interface IStateProps {
   count: number;
@@ -30,9 +31,9 @@ class Counter extends Component<ICounterProps, any> {
         {/*padding: 0 0 20px 0;*/}
         {/*}*/}
         {/*`}</style>*/}
-        <h1>
+        <Typography variant="h4" gutterBottom>
           Count: <span>{count}</span>
-        </h1>
+        </Typography>
         <Button
           onClick={this.props.clickIncrementButton}
           variant="contained"
