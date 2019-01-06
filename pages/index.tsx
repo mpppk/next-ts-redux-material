@@ -5,16 +5,16 @@ import { counterActionCreators } from '../actions';
 import Page from '../components/Page';
 
 class Index extends React.Component {
+  // tslint:disable-next-line member-access
   static async getInitialProps(props) {
-    // tslint:disable-line member-access
     const { store, isServer } = props.ctx;
     store.dispatch(counterActionCreators.requestAmountChanging({ amount: 1 }));
     return { isServer };
   }
 
+  // tslint:disable-next-line member-access
   render() {
-    // tslint:disable-line member-access
-    return <Page title="Index Page" linkTo="/other" NavigateTo="Other Page" />;
+    return <Page title="Index Page" />;
   }
 }
 
