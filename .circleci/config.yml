@@ -1,0 +1,52 @@
+version: 2
+restore_cache: &restore_cache
+  keys:
+    - v1-dependencies-{{ .Branch }}-{{ checksum "package.json" }}
+    - v1-dependencies-{{ .Branch }}
+jobs:
+  build: &build
+    docker:
+      - image: circleci/node:8-stretch
+
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache: *restore_cache
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ .Branch }}-{{ checksum "package.json" }}
+  webpack-build:
+    <<: *build
+    steps:
+      - checkout
+      - restore_cache: *restore_cache
+      - run: npm run build
+  lint:
+    <<: *build
+    steps:
+      - checkout
+      - restore_cache: *restore_cache
+      - run: npm run lint
+  test:
+    <<: *build
+    steps:
+      - checkout
+      - restore_cache: *restore_cache
+      - run: npm test
+
+workflows:
+  version: 2
+  all:
+    jobs:
+      - build
+      - webpack-build:
+          requires:
+            - build
+      - lint:
+          requires:
+            - build
+      - test:
+          requires:
+            - build
