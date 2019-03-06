@@ -8,7 +8,8 @@
     "type-check": "tsc",
     "pretty-quick": "pretty-quick",
     "precommit": "pretty-quick --staged",
-    "tslint:prettier-check": "tslint-config-prettier-check ./tslint.json"
+    "tslint:prettier-check": "tslint-config-prettier-check ./tslint.json",
+    "tslint": "tslint -c tslint.json 'src/**/*.ts' 'src/**/*.tsx' 'test/**/*.ts'"
   },
   "dependencies": {
     "@material-ui/core": "^3.8.1",
