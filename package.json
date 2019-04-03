@@ -28,7 +28,7 @@
     "redux-saga": "1.0.2",
     "typeface-roboto": "0.0.54",
     "typescript-fsa": "3.0.0-beta-2",
-    "typescript-fsa-reducers": "1.2.0",
+    "typescript-fsa-reducers": "1.2.1",
     "typescript-fsa-redux-saga": "1.1.1"
   },
   "devDependencies": {
