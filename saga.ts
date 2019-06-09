@@ -2,8 +2,7 @@
 
 import es6promise from 'es6-promise';
 import 'isomorphic-unfetch';
-import { delay, SagaIterator } from 'redux-saga';
-import { all, call, takeEvery } from 'redux-saga/effects';
+import { all, delay, takeEvery } from 'redux-saga/effects';
 import { bindAsyncAction } from 'typescript-fsa-redux-saga';
 import { counterActionCreators, counterAsyncActionCreators } from './actions';
 
@@ -11,8 +10,8 @@ es6promise.polyfill();
 
 const counterIncrementWorker = bindAsyncAction(
   counterAsyncActionCreators.changeAmountWithSleep
-)(function*(payload): SagaIterator {
-  yield call(delay, payload.sleep);
+)(function*(payload) {
+  yield delay(payload.sleep);
   return { amount: payload.amount };
 });
 
