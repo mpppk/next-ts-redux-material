@@ -9,7 +9,8 @@
     "pretty-quick": "pretty-quick",
     "precommit": "pretty-quick --staged",
     "tslint:prettier-check": "tslint-config-prettier-check ./tslint.json",
-    "tslint": "tslint -c tslint.json 'src/**/*.ts' 'src/**/*.tsx' 'test/**/*.ts'"
+    "tslint": "tslint -c tslint.json 'src/**/*.ts' 'src/**/*.tsx' 'test/**/*.ts'",
+    "export": "npm run build && next export"
   },
   "dependencies": {
     "@material-ui/core": "3.9.3",
