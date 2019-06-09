@@ -5,7 +5,7 @@ export const exampleInitialState = {
   count: 0
 };
 
-type State = typeof exampleInitialState;
+export type State = typeof exampleInitialState;
 
 const addCount = (state: State, amount: number) => {
   return { ...state, count: state.count + amount };

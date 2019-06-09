@@ -6,7 +6,17 @@ import Counter from '../../components/Counter';
 import Page from '../../components/Page';
 
 describe('Page', () => {
-  const wrapper = shallow(<Page title="test" />);
+  // tslint:disable-next-line no-empty
+  const emptyButtonHandler = (_nc: number) => {};
+  const wrapper = shallow(
+    <Page
+      title="test"
+      count={0}
+      onClickIncrementButton={emptyButtonHandler}
+      onClickDecrementButton={emptyButtonHandler}
+      onClickIncrementLaterButton={emptyButtonHandler}
+    />
+  );
   it('has 1 AppBar', async () => {
     expect(wrapper.find(AppBar)).toHaveLength(1);
   });

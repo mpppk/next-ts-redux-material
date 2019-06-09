@@ -1,20 +1,25 @@
 import Typography from '@material-ui/core/Typography/Typography';
 import * as React from 'react';
 import AppBar from './AppBar';
-import Counter from './Counter';
+import Counter, { ICounterProps } from './Counter';
 
-export interface IPageProps {
+export type PageProps = {
   title: string;
-}
+} & ICounterProps;
 
-export default function Page({ title }: IPageProps) {
+export default function Page(props: PageProps) {
   return (
     <div>
       <AppBar />
       <Typography variant="h2" gutterBottom={true}>
-        {title}
+        {props.title}
       </Typography>
-      <Counter />
+      <Counter
+        count={props.count}
+        onClickIncrementButton={props.onClickIncrementButton}
+        onClickDecrementButton={props.onClickDecrementButton}
+        onClickIncrementLaterButton={props.onClickIncrementLaterButton}
+      />
     </div>
   );
 }
