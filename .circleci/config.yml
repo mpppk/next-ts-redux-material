@@ -12,7 +12,7 @@ jobs:
     steps:
       - checkout
       - restore_cache: *restore_cache
-      - run: npm install
+      - run: yarn install
       - save_cache:
           paths:
             - node_modules
@@ -22,19 +22,19 @@ jobs:
     steps:
       - checkout
       - restore_cache: *restore_cache
-      - run: npm run build
+      - run: yarn run build
   lint:
     <<: *build
     steps:
       - checkout
       - restore_cache: *restore_cache
-      - run: npm run tslint
+      - run: yarn run tslint
   test:
     <<: *build
     steps:
       - checkout
       - restore_cache: *restore_cache
-      - run: npm test
+      - run: yarn run test
 
 workflows:
   version: 2
