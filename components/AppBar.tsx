@@ -5,7 +5,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import Toolbar from '@material-ui/core/Toolbar/Toolbar';
 import Typography from '@material-ui/core/Typography/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
-import React from 'react';
+import * as React from 'react';
 import MyDrawer from './drawer/Drawer';
 
 const styles = {
