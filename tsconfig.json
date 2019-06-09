@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "jsx": "preserve",
+    "jsx": "react",
     "lib": ["dom", "es2017"],
     "moduleResolution": "node",
     "allowJs": true,

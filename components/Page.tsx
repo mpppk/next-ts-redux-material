@@ -1,9 +1,13 @@
 import Typography from '@material-ui/core/Typography/Typography';
-import { connect } from 'react-redux';
+import * as React from 'react';
 import AppBar from './AppBar';
 import Counter from './Counter';
 
-function Page({ title }) {
+export interface IPageProps {
+  title: string;
+}
+
+export default function Page({ title }: IPageProps) {
   return (
     <div>
       <AppBar />
@@ -14,5 +18,3 @@ function Page({ title }) {
     </div>
   );
 }
-
-export default connect(state => state)(Page);
