@@ -1,3 +1,5 @@
+# frontend template repository consist of Next.js + TypeScript + Redux + Material UI
+
 [![CircleCI](https://circleci.com/gh/mpppk/next-ts-redux-material.svg?style=svg)](https://circleci.com/gh/mpppk/next-ts-redux-material) [![Netlify Status](https://api.netlify.com/api/v1/badges/1972f191-1c4c-4a2f-a5e4-a8a7c1df217f/deploy-status)](https://app.netlify.com/sites/next-ts-redux-material/deploys)
 
 A frontend template repository that be consisted of
