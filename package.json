@@ -39,7 +39,7 @@
     "@types/next": "8.0.5",
     "@types/react": "16.8.22",
     "@types/react-dom": "16.8.4",
-    "@types/react-redux": "7.1.0",
+    "@types/react-redux": "7.1.1",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.14.0",
     "husky": "2.7.0",
