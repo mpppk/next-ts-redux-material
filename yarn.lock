@@ -973,9 +973,9 @@
   dependencies:
     "@types/node" "*"
 
-"@types/enzyme@3.10.0":
-  version "3.10.0"
-  resolved "https://registry.yarnpkg.com/@types/enzyme/-/enzyme-3.10.0.tgz#252356f8e447d7de06458399d269f4dbafecb7a5"
+"@types/enzyme@3.10.1":
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/@types/enzyme/-/enzyme-3.10.1.tgz#74a7f7345075a4c03e574661068d3f96a054f495"
   dependencies:
     "@types/cheerio" "*"
     "@types/react" "*"
