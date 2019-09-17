@@ -977,32 +977,15 @@
     redux "^4.0.4"
     typescript-tuple "^2.2.1"
 
-"@redux-saga/deferred@^1.0.0-beta.2":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@redux-saga/deferred/-/deferred-1.0.1.tgz#c895445e486bded90acf0b873b4e978fbfe458c2"
-
 "@redux-saga/deferred@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@redux-saga/deferred/-/deferred-1.1.0.tgz#aff018f64a936c288c18bd64ddf9ccfa143db6b4"
-
-"@redux-saga/delay-p@^1.0.0-beta.2":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@redux-saga/delay-p/-/delay-p-1.0.1.tgz#d69fc6103c7509ae80faa144ea17bbc69e51e029"
-  dependencies:
-    "@redux-saga/symbols" "^1.0.1"
 
 "@redux-saga/delay-p@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@redux-saga/delay-p/-/delay-p-1.1.0.tgz#4024f979d0f78763d2e90233be8c922781ae4400"
   dependencies:
     "@redux-saga/symbols" "^1.1.0"
-
-"@redux-saga/is@^1.0.0-beta.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@redux-saga/is/-/is-1.0.2.tgz#7f4be014c97061898d7efb11d6c9de31e943ed38"
-  dependencies:
-    "@redux-saga/symbols" "^1.0.1"
-    "@redux-saga/types" "^1.0.2"
 
 "@redux-saga/is@^1.1.0":
   version "1.1.0"
@@ -1011,17 +994,9 @@
     "@redux-saga/symbols" "^1.1.0"
     "@redux-saga/types" "^1.1.0"
 
-"@redux-saga/symbols@^1.0.0-beta.2", "@redux-saga/symbols@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@redux-saga/symbols/-/symbols-1.0.1.tgz#46512ae1275f88df061c42168d0f600ddb170c1e"
-
 "@redux-saga/symbols@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@redux-saga/symbols/-/symbols-1.1.0.tgz#676b277cb5deb48ce723b2b394cbae97f82e8319"
-
-"@redux-saga/types@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@redux-saga/types/-/types-1.0.2.tgz#1d94f02800b094753f9271c206a26c2a06ca14ee"
 
 "@redux-saga/types@^1.1.0":
   version "1.1.0"
@@ -5487,21 +5462,11 @@ redux-saga-test-plan@4.0.0-beta.3:
     object-assign "^4.1.0"
     util-inspect "^0.1.8"
 
-redux-saga@1.1.1:
+redux-saga@1.1.1, redux-saga@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/redux-saga/-/redux-saga-1.1.1.tgz#7e02879beb02c92030b5fbe746fd70e8bda97dfb"
   dependencies:
     "@redux-saga/core" "^1.1.1"
-
-"redux-saga@>=0.14.0 <0.17.0 || 1.0.0-beta.0 || 1.0.0-beta.1 || 1.0.0-beta.2":
-  version "1.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/redux-saga/-/redux-saga-1.0.0-beta.2.tgz#6f87a491dbd35bc78d4b8a3433c064f833df9789"
-  dependencies:
-    "@redux-saga/deferred" "^1.0.0-beta.2"
-    "@redux-saga/delay-p" "^1.0.0-beta.2"
-    "@redux-saga/is" "^1.0.0-beta.2"
-    "@redux-saga/symbols" "^1.0.0-beta.2"
-    redux ">=0.10 <5"
 
 redux@4.0.4, redux@^4.0.4:
   version "4.0.4"
@@ -5510,7 +5475,7 @@ redux@4.0.4, redux@^4.0.4:
     loose-envify "^1.4.0"
     symbol-observable "^1.2.0"
 
-"redux@>=0.10 <5", redux@^4.0.0:
+redux@^4.0.0:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/redux/-/redux-4.0.1.tgz#436cae6cc40fbe4727689d7c8fae44808f1bfef5"
   dependencies:
@@ -6430,21 +6395,17 @@ typescript-fsa-reducers@1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/typescript-fsa-reducers/-/typescript-fsa-reducers-1.2.1.tgz#2af1a85f7b88fb0dfb9fa59d5da51a5d7ac6543f"
 
-typescript-fsa-redux-saga@1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/typescript-fsa-redux-saga/-/typescript-fsa-redux-saga-1.1.1.tgz#bee346cbd3bffbab4610a44f900ef63aca466fca"
+typescript-fsa-redux-saga@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/typescript-fsa-redux-saga/-/typescript-fsa-redux-saga-2.0.0.tgz#64f0296958bd55a3a212bb6c683131a006d2a568"
   dependencies:
-    redux-saga ">=0.14.0 <0.17.0 || 1.0.0-beta.0 || 1.0.0-beta.1 || 1.0.0-beta.2"
+    redux-saga "^1.0.0"
     tslib "^1.7.1"
-    typescript-fsa "^2.0.0 || ^3.0.0-beta-2"
+    typescript-fsa "^3.0.0"
 
-typescript-fsa@3.0.0:
+typescript-fsa@3.0.0, typescript-fsa@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/typescript-fsa/-/typescript-fsa-3.0.0.tgz#3ad1cb915a67338e013fc21f67c9b3e0e110c912"
-
-"typescript-fsa@^2.0.0 || ^3.0.0-beta-2":
-  version "3.0.0-beta-2"
-  resolved "https://registry.yarnpkg.com/typescript-fsa/-/typescript-fsa-3.0.0-beta-2.tgz#1cc1d0c014c025fd51cba097776033ac4b6b753c"
 
 typescript-logic@^0.0.0:
   version "0.0.0"
