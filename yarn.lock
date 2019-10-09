@@ -2721,11 +2721,12 @@ env-paths@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/env-paths/-/env-paths-2.2.0.tgz#cdca557dc009152917d6166e2febe1f039685e43"
 
-enzyme-adapter-react-16@1.14.0:
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/enzyme-adapter-react-16/-/enzyme-adapter-react-16-1.14.0.tgz#204722b769172bcf096cb250d33e6795c1f1858f"
+enzyme-adapter-react-16@1.15.0:
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/enzyme-adapter-react-16/-/enzyme-adapter-react-16-1.15.0.tgz#f7f72ab13b6596f944918c60f42e4ce38d890860"
   dependencies:
     enzyme-adapter-utils "^1.12.0"
+    enzyme-shallow-equal "^1.0.0"
     has "^1.0.3"
     object.assign "^4.1.0"
     object.values "^1.1.0"
@@ -2744,6 +2745,13 @@ enzyme-adapter-utils@^1.12.0:
     object.fromentries "^2.0.0"
     prop-types "^15.7.2"
     semver "^5.6.0"
+
+enzyme-shallow-equal@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/enzyme-shallow-equal/-/enzyme-shallow-equal-1.0.0.tgz#d8e4603495e6ea279038eef05a4bf4887b55dc69"
+  dependencies:
+    has "^1.0.3"
+    object-is "^1.0.1"
 
 enzyme@3.10.0:
   version "3.10.0"
