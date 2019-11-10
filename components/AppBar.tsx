@@ -1,5 +1,4 @@
 import AppBar from '@material-ui/core/AppBar/AppBar';
-import Button from '@material-ui/core/Button/Button';
 import IconButton from '@material-ui/core/IconButton/IconButton';
 import { Theme } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar/Toolbar';
@@ -8,7 +7,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/styles';
 import * as React from 'react';
 import { useState } from 'react';
+import { IUser } from '../reducer';
 import MyDrawer from './drawer/Drawer';
+import LoginButton from './LoginButton';
+import ProfileButton from './ProfileButton';
 
 const useStyles = makeStyles((theme: Theme) => ({
   menuButton: {
@@ -22,8 +24,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
+interface IMyAppBarProps {
+  user: IUser | null;
+}
+
 // tslint:disable-next-line variable-name
-export default function MyAppBar() {
+export default function MyAppBar(props: IMyAppBarProps) {
   const classes = useStyles(undefined);
   const [isDrawerOpen, setDrawerOpen] = useState(false);
 
@@ -50,7 +56,7 @@ export default function MyAppBar() {
           <Typography variant="h6" className={classes.title}>
             Frontend boilerplate
           </Typography>
-          <Button color="inherit">Login</Button>
+          {props.user ? <ProfileButton user={props.user} /> : <LoginButton />}
         </Toolbar>
       </AppBar>
     </div>

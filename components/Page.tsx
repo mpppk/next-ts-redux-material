@@ -13,7 +13,7 @@ export type PageProps = {
 export default function Page(props: PageProps) {
   return (
     <div>
-      <MyAppBar />
+      <MyAppBar user={props.user} />
       <Typography variant="h2" gutterBottom={true}>
         {props.title}
       </Typography>
