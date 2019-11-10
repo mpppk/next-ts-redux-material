@@ -32,7 +32,6 @@ interface IMyAppBarProps {
 export default function MyAppBar(props: IMyAppBarProps) {
   const classes = useStyles(undefined);
   const [isDrawerOpen, setDrawerOpen] = useState(false);
-
   const handleDrawer = (open: boolean) => () => setDrawerOpen(open);
 
   return (

@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 import { IUser } from '../reducer';
+import ProfileMenu from './ProfileMenu';
 
 export interface IProfileButtonProps {
   user: IUser;
@@ -19,10 +20,32 @@ const ProfileButton: React.FunctionComponent<IProfileButtonProps> = props => {
   const classes = useStyles(undefined);
   const { user } = props;
 
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const handleClickProfileButton = (e: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(e.currentTarget);
+  };
+  const setNullAnchorEl = () => setAnchorEl(null);
+
   return (
-    <Button color="inherit">
-      <Avatar alt="Remy Sharp" src={user.photoURL} className={classes.avatar} />
-    </Button>
+    <div>
+      <Button
+        aria-controls="profile-menu"
+        aria-haspopup="true"
+        color="inherit"
+        onClick={handleClickProfileButton}
+      >
+        <Avatar
+          alt="Avatar Icon"
+          src={user.photoURL}
+          className={classes.avatar}
+        />
+      </Button>
+      <ProfileMenu
+        anchorEl={anchorEl}
+        onClickLogout={setNullAnchorEl}
+        onClose={setNullAnchorEl}
+      />
+    </div>
   );
 };
 
