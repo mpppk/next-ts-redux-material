@@ -4,7 +4,7 @@ import {
   counterActionCreators,
   counterAsyncActionCreators,
   IRequestAmountChangingWithSleepPayload
-} from './actions';
+} from './actions/counter';
 
 export const counterIncrementWorker = bindAsyncAction(
   counterAsyncActionCreators.changeAmountWithSleep

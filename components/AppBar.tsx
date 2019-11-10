@@ -6,6 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar/Toolbar';
 import Typography from '@material-ui/core/Typography/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 import * as React from 'react';
+import { IUser } from '../reducer';
 import MyDrawer from './drawer/Drawer';
 
 const styles = {
@@ -21,8 +22,12 @@ const styles = {
   }
 };
 
+type MyAppBarProps = {
+  user: IUser | null;
+} & { classes };
+
 // tslint:disable-next-line variable-name
-class MyAppBar extends React.Component<{ classes }> {
+class MyAppBar extends React.Component<MyAppBarProps> {
   // tslint:disable-next-line member-access
   state = {
     isDrawerOpen: false
@@ -56,7 +61,9 @@ class MyAppBar extends React.Component<{ classes }> {
             <Typography variant="h6" color="inherit" className={classes.grow}>
               Next.js+TypeScript+Redux+MUI DEMO
             </Typography>
-            <Button color="inherit">Login</Button>
+            <Button color="inherit">
+              {this.props.user ? this.props.user.displayName : 'Login'}
+            </Button>
           </Toolbar>
         </AppBar>
       </div>

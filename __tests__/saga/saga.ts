@@ -1,5 +1,5 @@
 import { testSaga } from 'redux-saga-test-plan';
-import { counterActionCreators } from '../../actions';
+import { counterActionCreators } from '../../actions/counter';
 import {
   counterIncrementWorker,
   counterIncrementWorkerWrapper,
