@@ -4,7 +4,7 @@ import {
   counterIncrementWorker,
   counterIncrementWorkerWrapper,
   watchIncrementAsync
-} from '../../saga';
+} from '../../sagas/counter';
 
 describe('sagas', () => {
   it('handle clickAsyncIncrementButton action', async () => {
