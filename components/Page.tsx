@@ -8,12 +8,13 @@ import { SignInScreen } from './SignInScreen';
 export type PageProps = {
   title: string;
   user: IUser | null;
+  onClickLogout: () => void;
 } & ICounterProps;
 
 export default function Page(props: PageProps) {
   return (
     <div>
-      <MyAppBar user={props.user} />
+      <MyAppBar user={props.user} onClickLogout={props.onClickLogout} />
       <Typography variant="h2" gutterBottom={true}>
         {props.title}
       </Typography>

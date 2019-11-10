@@ -24,10 +24,20 @@ class Index extends React.Component<IndexProps> {
     return { isServer };
   }
 
+  constructor(props) {
+    super(props);
+    this.handleClickLogout = this.handleClickLogout.bind(this);
+  }
+
   public componentDidMount(): void {
-    firebase.auth().onAuthStateChanged(user => {
-      this.props.updateUser({ user: fromFirebaseUserToUser(user) });
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+      const user = firebaseUser ? fromFirebaseUserToUser(firebaseUser) : null;
+      this.props.updateUser({ user });
     });
+  }
+
+  public async handleClickLogout(): Promise<void> {
+    await firebase.auth().signOut();
   }
 
   // tslint:disable-next-line member-access
@@ -40,6 +50,7 @@ class Index extends React.Component<IndexProps> {
         onClickIncrementButton={this.props.clickIncrementButton}
         onClickDecrementButton={this.props.clickDecrementButton}
         onClickIncrementLaterButton={this.props.clickAsyncIncrementButton}
+        onClickLogout={this.handleClickLogout}
       />
     );
   }

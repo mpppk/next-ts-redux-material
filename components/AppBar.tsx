@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 interface IMyAppBarProps {
   user: IUser | null;
+  onClickLogout: () => void;
 }
 
 // tslint:disable-next-line variable-name
@@ -55,7 +56,14 @@ export default function MyAppBar(props: IMyAppBarProps) {
           <Typography variant="h6" className={classes.title}>
             Frontend boilerplate
           </Typography>
-          {props.user ? <ProfileButton user={props.user} /> : <LoginButton />}
+          {props.user ? (
+            <ProfileButton
+              user={props.user}
+              onClickLogout={props.onClickLogout}
+            />
+          ) : (
+            <LoginButton />
+          )}
         </Toolbar>
       </AppBar>
     </div>

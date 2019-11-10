@@ -7,6 +7,7 @@ import ProfileMenu from './ProfileMenu';
 
 export interface IProfileButtonProps {
   user: IUser;
+  onClickLogout: () => void;
 }
 
 const useStyles = makeStyles((_: Theme) => ({
@@ -20,11 +21,16 @@ const ProfileButton: React.FunctionComponent<IProfileButtonProps> = props => {
   const classes = useStyles(undefined);
   const { user } = props;
 
+  // console.log('user', user);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const handleClickProfileButton = (e: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(e.currentTarget);
   };
   const setNullAnchorEl = () => setAnchorEl(null);
+  const handleClickLogout = () => {
+    setNullAnchorEl();
+    props.onClickLogout();
+  };
 
   return (
     <div>
@@ -42,7 +48,7 @@ const ProfileButton: React.FunctionComponent<IProfileButtonProps> = props => {
       </Button>
       <ProfileMenu
         anchorEl={anchorEl}
-        onClickLogout={setNullAnchorEl}
+        onClickLogout={handleClickLogout}
         onClose={setNullAnchorEl}
       />
     </div>
