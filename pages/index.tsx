@@ -1,7 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
-import firebase from 'firebase';
 import { bindActionCreators, Dispatch } from 'redux';
 import { counterActionCreators } from '../actions/counter';
 import { sessionActionCreators } from '../actions/session';
@@ -33,7 +31,7 @@ class Index extends React.Component<IndexProps> {
   }
 
   public async handleClickLogout(): Promise<void> {
-    await firebase.auth().signOut();
+    this.props.requestToLogout();
   }
 
   // tslint:disable-next-line member-access
