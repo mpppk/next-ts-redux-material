@@ -21,7 +21,6 @@ const ProfileButton: React.FunctionComponent<IProfileButtonProps> = props => {
   const classes = useStyles(undefined);
   const { user } = props;
 
-  // console.log('user', user);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const handleClickProfileButton = (e: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(e.currentTarget);

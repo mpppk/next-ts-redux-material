@@ -8,7 +8,10 @@ import { sessionActionCreators } from '../actions/session';
 import { ICounterProps } from '../components/Counter';
 import Page from '../components/Page';
 import { IUser, State } from '../reducer';
-import { fromFirebaseUserToUser } from '../services/session';
+import {
+  fromFirebaseUserToUser,
+  initializeFirebase
+} from '../services/session';
 
 type IndexProps = {
   user: IUser | null;
@@ -30,6 +33,7 @@ class Index extends React.Component<IndexProps> {
   }
 
   public componentDidMount(): void {
+    initializeFirebase();
     firebase.auth().onAuthStateChanged(firebaseUser => {
       const user = firebaseUser ? fromFirebaseUserToUser(firebaseUser) : null;
       this.props.updateUser({ user });

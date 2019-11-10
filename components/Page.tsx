@@ -3,7 +3,6 @@ import * as React from 'react';
 import { IUser } from '../reducer';
 import MyAppBar from './AppBar';
 import Counter, { ICounterProps } from './Counter';
-import { SignInScreen } from './SignInScreen';
 
 export type PageProps = {
   title: string;
@@ -18,7 +17,6 @@ export default function Page(props: PageProps) {
       <Typography variant="h2" gutterBottom={true}>
         {props.title}
       </Typography>
-      <SignInScreen />
       <Counter
         count={props.count}
         onClickIncrementButton={props.onClickIncrementButton}
