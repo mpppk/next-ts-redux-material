@@ -1,80 +1,58 @@
 import AppBar from '@material-ui/core/AppBar/AppBar';
 import Button from '@material-ui/core/Button/Button';
 import IconButton from '@material-ui/core/IconButton/IconButton';
-import withStyles from '@material-ui/core/styles/withStyles';
+import { Theme } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar/Toolbar';
 import Typography from '@material-ui/core/Typography/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
+import { makeStyles } from '@material-ui/styles';
 import * as React from 'react';
-import { IUser } from '../reducer';
+import { useState } from 'react';
 import MyDrawer from './drawer/Drawer';
 
-const styles = {
-  grow: {
-    flexGrow: 1
-  },
+const useStyles = makeStyles((theme: Theme) => ({
   menuButton: {
-    marginLeft: -12,
-    marginRight: 20
+    marginRight: theme.spacing(2)
   },
   root: {
     flexGrow: 1
+  },
+  title: {
+    flexGrow: 1
   }
-};
-
-type MyAppBarProps = {
-  user: IUser | null;
-} & { classes };
+}));
 
 // tslint:disable-next-line variable-name
-class MyAppBar extends React.Component<MyAppBarProps> {
-  // tslint:disable-next-line member-access
-  state = {
-    isDrawerOpen: false
-  };
+export default function MyAppBar() {
+  const classes = useStyles(undefined);
+  const [isDrawerOpen, setDrawerOpen] = useState(false);
 
-  constructor() {
-    // @ts-ignore
-    super();
-  }
+  const handleDrawer = (open: boolean) => () => setDrawerOpen(open);
 
-  // tslint:disable-next-line member-access
-  render() {
-    const { classes } = this.props;
-    return (
-      <div className={classes.root}>
-        <AppBar position="static">
-          <MyDrawer
-            open={this.state.isDrawerOpen}
-            onClose={this.toggleDrawer(false)}
-            onClickSideList={this.toggleDrawer(false)}
-          />
-          <Toolbar>
-            <IconButton
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="Menu"
-              onClick={this.toggleDrawer(true)}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" color="inherit" className={classes.grow}>
-              Next.js+TypeScript+Redux+MUI DEMO
-            </Typography>
-            <Button color="inherit">
-              {this.props.user ? this.props.user.displayName : 'Login'}
-            </Button>
-          </Toolbar>
-        </AppBar>
-      </div>
-    );
-  }
-
-  private toggleDrawer = open => () => {
-    this.setState({
-      isDrawerOpen: open
-    });
-  };
+  return (
+    <div className={classes.root}>
+      <AppBar position="static">
+        <MyDrawer
+          open={isDrawerOpen}
+          onClose={handleDrawer(false)}
+          onClickSideList={handleDrawer(false)}
+        />
+        <Toolbar>
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+            onClick={handleDrawer(true)}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" className={classes.title}>
+            Frontend boilerplate
+          </Typography>
+          <Button color="inherit">Login</Button>
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
 }
-
-export default withStyles(styles)(MyAppBar);

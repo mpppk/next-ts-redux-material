@@ -1,7 +1,7 @@
 import Typography from '@material-ui/core/Typography/Typography';
 import * as React from 'react';
 import { IUser } from '../reducer';
-import AppBar from './AppBar';
+import MyAppBar from './AppBar';
 import Counter, { ICounterProps } from './Counter';
 import { SignInScreen } from './SignInScreen';
 
@@ -13,7 +13,7 @@ export type PageProps = {
 export default function Page(props: PageProps) {
   return (
     <div>
-      <AppBar user={props.user} />
+      <MyAppBar />
       <Typography variant="h2" gutterBottom={true}>
         {props.title}
       </Typography>
