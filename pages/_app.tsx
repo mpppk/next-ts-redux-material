@@ -2,7 +2,7 @@ import CssBaseline from '@material-ui/core/CssBaseline/CssBaseline';
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 import withReduxSaga from 'next-redux-saga';
 import withRedux from 'next-redux-wrapper';
-import App, { Container } from 'next/app';
+import App from 'next/app';
 import React from 'react';
 import { Provider } from 'react-redux';
 import theme from '../src/theme';
@@ -17,19 +17,18 @@ class MyApp extends App {
     }
     return { pageProps };
   }
+
   public render() {
     // @ts-ignore
     const { Component, pageProps, store } = this.props;
     return (
-      <Container>
-        <Provider store={store}>
-          <ThemeProvider theme={theme}>
-            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-            <CssBaseline />
-            <Component {...pageProps} />
-          </ThemeProvider>
-        </Provider>
-      </Container>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </Provider>
     );
   }
 }
