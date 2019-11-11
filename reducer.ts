@@ -7,6 +7,7 @@ import { sessionActionCreators } from './actions/session';
 
 export const exampleInitialState = {
   count: 0,
+  isReadyFirebase: false,
   user: (null as IUser) || null
 };
 
@@ -27,6 +28,9 @@ const addCount = (state: State, amount: number) => {
 };
 
 const reducer = reducerWithInitialState(exampleInitialState)
+  .case(sessionActionCreators.finishFirebaseInitializing, state => {
+    return { ...state, isReadyFirebase: true };
+  })
   .case(sessionActionCreators.updateUser, (state, payload) => {
     return { ...state, user: payload.user };
   })

@@ -4,3 +4,4 @@ coverage
 .idea
 out
 *.cache
+.env

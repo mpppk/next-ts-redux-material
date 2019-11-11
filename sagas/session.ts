@@ -57,5 +57,6 @@ export const sessionWatchers = [
 
 function* initializeFirebaseWorkerWrapper() {
   initializeFirebase();
+  yield put(sessionActionCreators.finishFirebaseInitializing());
   yield fork(saga);
 }

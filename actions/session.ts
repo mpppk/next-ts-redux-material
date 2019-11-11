@@ -8,6 +8,9 @@ export const sessionAsyncActionCreators = {
 };
 
 export const sessionActionCreators = {
+  finishFirebaseInitializing: sessionActionCreatorFactory(
+    'FINISH_FIREBASE_INITIALIZING'
+  ),
   requestToInitializeFirebase: sessionActionCreatorFactory(
     'REQUEST_TO_INITIALIZE_FIREBASE'
   ),

@@ -17,14 +17,16 @@ const useStyles = makeStyles((_: Theme) => ({
   }
 }));
 
+// initializeFirebase();
+// TODO: ここに書くとSSRしてしまうので、reduxとconnectしてcomponentDidMountしてから実行する
 const uiConfig = getFirebaseUIConfig();
 
 export default () => {
   const classes = useStyles(undefined);
   return (
     <Grid className={classes.root} container={true}>
-      <Grid item={true} xs={12} spacing={2}>
-        <Grid container={true} justify="center" spacing={2}>
+      <Grid item={true} xs={12}>
+        <Grid container={true} justify="center">
           <Paper>
             <h1 className={classes.header}>Login</h1>
             <StyledFirebaseAuth

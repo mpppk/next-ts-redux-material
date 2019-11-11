@@ -1,8 +1,9 @@
 import Typography from '@material-ui/core/Typography/Typography';
-import AppBar from '../components/AppBar';
+import * as React from 'react';
+
 export default () => (
   <div>
-    <AppBar />
+    // TODO: connect to redux and add AppBar
     <Typography variant="h2" gutterBottom={true}>
       About
     </Typography>
