@@ -1,10 +1,10 @@
-import { all, delay, takeEvery } from 'redux-saga/effects';
+import { delay, takeEvery } from 'redux-saga/effects';
 import { bindAsyncAction } from 'typescript-fsa-redux-saga';
 import {
   counterActionCreators,
   counterAsyncActionCreators,
   IRequestAmountChangingWithSleepPayload
-} from './actions';
+} from '../actions/counter';
 
 export const counterIncrementWorker = bindAsyncAction(
   counterAsyncActionCreators.changeAmountWithSleep
@@ -21,8 +21,4 @@ export function* watchIncrementAsync() {
     counterActionCreators.clickAsyncIncrementButton.type,
     counterIncrementWorkerWrapper
   );
-}
-
-export default function* rootSaga() {
-  yield all([watchIncrementAsync()]);
 }

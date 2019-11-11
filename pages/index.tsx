@@ -1,13 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import { bindActionCreators, Dispatch } from 'redux';
-import { counterActionCreators } from '../actions';
+import { counterActionCreators } from '../actions/counter';
+import { sessionActionCreators } from '../actions/session';
 import { ICounterProps } from '../components/Counter';
 import Page from '../components/Page';
-import { State } from '../reducer';
+import { IUser, State } from '../reducer';
 
-type IndexProps = ICounterProps & typeof counterActionCreators;
+type IndexProps = {
+  user: IUser | null;
+} & ICounterProps &
+  typeof counterActionCreators &
+  typeof sessionActionCreators;
 
 class Index extends React.Component<IndexProps> {
   // tslint:disable-next-line member-access
@@ -17,15 +21,30 @@ class Index extends React.Component<IndexProps> {
     return { isServer };
   }
 
+  constructor(props) {
+    super(props);
+    this.handleClickLogout = this.handleClickLogout.bind(this);
+  }
+
+  public componentDidMount(): void {
+    this.props.requestToInitializeFirebase();
+  }
+
+  public async handleClickLogout(): Promise<void> {
+    this.props.requestToLogout();
+  }
+
   // tslint:disable-next-line member-access
   render() {
     return (
       <Page
+        user={this.props.user}
         count={this.props.count}
         title="Index Page"
         onClickIncrementButton={this.props.clickIncrementButton}
         onClickDecrementButton={this.props.clickDecrementButton}
         onClickIncrementLaterButton={this.props.clickAsyncIncrementButton}
+        onClickLogout={this.handleClickLogout}
       />
     );
   }
@@ -33,17 +52,16 @@ class Index extends React.Component<IndexProps> {
 
 const mapStateToProps = (state: State) => {
   return {
-    count: state.count
+    count: state.count,
+    user: state.user
   };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    ...bindActionCreators({ ...counterActionCreators }, dispatch)
+    ...bindActionCreators({ ...counterActionCreators }, dispatch),
+    ...bindActionCreators({ ...sessionActionCreators }, dispatch)
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Index);
+export default connect(mapStateToProps, mapDispatchToProps)(Index);
