@@ -8,6 +8,9 @@ import Page from '../../components/Page';
 describe('Page', () => {
   // tslint:disable-next-line no-empty
   const emptyButtonHandler = (_nc: number) => {};
+  // tslint:disable-next-line no-empty
+  const emptyClickEventHandler = () => {};
+
   const wrapper = shallow(
     <Page
       title="test"
@@ -15,6 +18,8 @@ describe('Page', () => {
       onClickIncrementButton={emptyButtonHandler}
       onClickDecrementButton={emptyButtonHandler}
       onClickIncrementLaterButton={emptyButtonHandler}
+      onClickLogout={emptyClickEventHandler}
+      user={null}
     />
   );
   it('has 1 AppBar', async () => {
