@@ -944,6 +944,10 @@
     tslib "1.10.0"
     xmlhttprequest "1.8.0"
 
+"@firebase/auth-interop-types@0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@firebase/auth-interop-types/-/auth-interop-types-0.1.1.tgz#b3e1bc5ea8b2df1c376b5fc14aae8a3572dbcace"
+
 "@firebase/auth-types@0.9.3":
   version "0.9.3"
   resolved "https://registry.yarnpkg.com/@firebase/auth-types/-/auth-types-0.9.3.tgz#c2e719a9911486177c31fb0c25a857e82c455e0d"
@@ -967,10 +971,11 @@
   dependencies:
     "@firebase/app-types" "0.5.0"
 
-"@firebase/database@0.5.16":
-  version "0.5.16"
-  resolved "https://registry.yarnpkg.com/@firebase/database/-/database-0.5.16.tgz#df326f44998d67887a4e381c808bf35453651bf2"
+"@firebase/database@0.5.17":
+  version "0.5.17"
+  resolved "https://registry.yarnpkg.com/@firebase/database/-/database-0.5.17.tgz#67631f57b1f809bea4c5c528cd951e8a502882f6"
   dependencies:
+    "@firebase/auth-interop-types" "0.1.1"
     "@firebase/component" "0.1.1"
     "@firebase/database-types" "0.4.10"
     "@firebase/logger" "0.1.33"
@@ -982,9 +987,9 @@
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@firebase/firestore-types/-/firestore-types-1.9.0.tgz#078ebb2728eb7d3d87ff5785b1fbcda07a183d39"
 
-"@firebase/firestore@1.9.0":
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/@firebase/firestore/-/firestore-1.9.0.tgz#ee6727d7c670500ce22016956ac3d87494c58b57"
+"@firebase/firestore@1.9.1":
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/@firebase/firestore/-/firestore-1.9.1.tgz#bef0f8617aed7416de5ac842583a2ffafea07eeb"
   dependencies:
     "@firebase/component" "0.1.1"
     "@firebase/firestore-types" "1.9.0"
@@ -3509,16 +3514,16 @@ find-up@^4.0.0, find-up@^4.1.0:
     locate-path "^5.0.0"
     path-exists "^4.0.0"
 
-firebase@7.6.0:
-  version "7.6.0"
-  resolved "https://registry.yarnpkg.com/firebase/-/firebase-7.6.0.tgz#63fbbf9b878f85e670db919e3e189152c2cda7df"
+firebase@7.6.1:
+  version "7.6.1"
+  resolved "https://registry.yarnpkg.com/firebase/-/firebase-7.6.1.tgz#ef9bf74d9d0d9fc2b3ac5945769c3d62ca076458"
   dependencies:
     "@firebase/analytics" "0.2.9"
     "@firebase/app" "0.5.0"
     "@firebase/app-types" "0.5.0"
     "@firebase/auth" "0.13.3"
-    "@firebase/database" "0.5.16"
-    "@firebase/firestore" "1.9.0"
+    "@firebase/database" "0.5.17"
+    "@firebase/firestore" "1.9.1"
     "@firebase/functions" "0.4.28"
     "@firebase/installations" "0.3.8"
     "@firebase/messaging" "0.6.0"
