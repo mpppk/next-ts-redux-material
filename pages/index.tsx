@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { counterActionCreators } from '../actions/counter';
-import { sessionActionCreators } from '../actions/session';
 import { ICounterProps } from '../components/Counter';
 import Page from '../components/Page';
 import { IUser, State } from '../reducer';
@@ -10,8 +9,7 @@ import { IUser, State } from '../reducer';
 type IndexProps = {
   user: IUser | null;
 } & ICounterProps &
-  typeof counterActionCreators &
-  typeof sessionActionCreators;
+  typeof counterActionCreators;
 
 class Index extends React.Component<IndexProps> {
   // tslint:disable-next-line member-access
@@ -23,19 +21,12 @@ class Index extends React.Component<IndexProps> {
 
   constructor(props) {
     super(props);
-    this.handleClickLogout = this.handleClickLogout.bind(this);
-  }
-
-  public componentDidMount(): void {
-    this.props.requestToInitializeFirebase();
-  }
-
-  public async handleClickLogout(): Promise<void> {
-    this.props.requestToLogout();
   }
 
   // tslint:disable-next-line member-access
   render() {
+    // tslint:disable-next-line
+    const emptyHandler = () => {};
     return (
       <Page
         user={this.props.user}
@@ -44,7 +35,7 @@ class Index extends React.Component<IndexProps> {
         onClickIncrementButton={this.props.clickIncrementButton}
         onClickDecrementButton={this.props.clickDecrementButton}
         onClickIncrementLaterButton={this.props.clickAsyncIncrementButton}
-        onClickLogout={this.handleClickLogout}
+        onClickLogout={emptyHandler}
       />
     );
   }
@@ -59,8 +50,7 @@ const mapStateToProps = (state: State) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    ...bindActionCreators({ ...counterActionCreators }, dispatch),
-    ...bindActionCreators({ ...sessionActionCreators }, dispatch)
+    ...bindActionCreators({ ...counterActionCreators }, dispatch)
   };
 };
 

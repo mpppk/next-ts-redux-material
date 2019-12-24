@@ -3,7 +3,6 @@ import {
   counterActionCreators,
   counterAsyncActionCreators
 } from './actions/counter';
-import { sessionActionCreators } from './actions/session';
 
 export const exampleInitialState = {
   count: 0,
@@ -28,12 +27,6 @@ const addCount = (state: State, amount: number) => {
 };
 
 const reducer = reducerWithInitialState(exampleInitialState)
-  .case(sessionActionCreators.finishFirebaseInitializing, state => {
-    return { ...state, isReadyFirebase: true };
-  })
-  .case(sessionActionCreators.updateUser, (state, payload) => {
-    return { ...state, user: payload.user };
-  })
   .case(counterActionCreators.clickIncrementButton, state => {
     return addCount(state, 1);
   })
