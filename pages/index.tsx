@@ -1,57 +1,50 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { counterActionCreators } from '../actions/counter';
-import { ICounterProps } from '../components/Counter';
 import Page from '../components/Page';
-import { IUser, State } from '../reducer';
+import { State } from '../reducer';
 
-type IndexProps = {
-  user: IUser | null;
-} & ICounterProps &
-  typeof counterActionCreators;
-
-class Index extends React.Component<IndexProps> {
-  // tslint:disable-next-line member-access
-  static async getInitialProps(props) {
-    const { store, isServer } = props.ctx;
-    store.dispatch(counterActionCreators.requestAmountChanging({ amount: 1 }));
-    return { isServer };
-  }
-
-  constructor(props) {
-    super(props);
-  }
-
-  // tslint:disable-next-line member-access
-  render() {
-    // tslint:disable-next-line
-    const emptyHandler = () => {};
-    return (
-      <Page
-        user={this.props.user}
-        count={this.props.count}
-        title="Index Page"
-        onClickIncrementButton={this.props.clickIncrementButton}
-        onClickDecrementButton={this.props.clickDecrementButton}
-        onClickIncrementLaterButton={this.props.clickAsyncIncrementButton}
-        onClickLogout={emptyHandler}
-      />
-    );
-  }
-}
-
-const mapStateToProps = (state: State) => {
+const useHandlers = () => {
+  const dispatch = useDispatch();
   return {
+    clickAsyncIncrementButton: () => {
+      dispatch(counterActionCreators.clickAsyncIncrementButton(undefined));
+    },
+    clickDecrementButton: () => {
+      dispatch(counterActionCreators.clickDecrementButton(undefined));
+    },
+    clickIncrementButton: () => {
+      dispatch(counterActionCreators.clickIncrementButton(undefined));
+    },
+    empty: () => {} //tslint:disable-line
+  };
+};
+
+// tslint:disable-next-line variable-name
+export const Index: React.FC = () => {
+  const handlers = useHandlers();
+  const globalState = useSelector((state: State) => ({
     count: state.count,
     user: state.user
-  };
+  }));
+
+  return (
+    <Page
+      user={globalState.user}
+      count={globalState.count}
+      title="Index Page"
+      onClickIncrementButton={handlers.clickIncrementButton}
+      onClickDecrementButton={handlers.clickDecrementButton}
+      onClickIncrementLaterButton={handlers.clickAsyncIncrementButton}
+      onClickLogout={handlers.empty}
+    />
+  );
 };
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
-  return {
-    ...bindActionCreators({ ...counterActionCreators }, dispatch)
-  };
+(Index as any).getInitialProps = props => {
+  const { store, isServer } = props.ctx;
+  store.dispatch(counterActionCreators.requestAmountChanging({ amount: 1 }));
+  return { isServer };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Index);
+export default Index;
