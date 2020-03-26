@@ -934,15 +934,15 @@
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/@emotion/hash/-/hash-0.8.0.tgz#bbbff68978fefdbe68ccb533bc8cbe1d1afb5413"
 
-"@firebase/analytics-types@0.2.8":
-  version "0.2.8"
-  resolved "https://registry.yarnpkg.com/@firebase/analytics-types/-/analytics-types-0.2.8.tgz#f451b2a30f6c73af7e4c59a80e9bdc059d2486eb"
+"@firebase/analytics-types@0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@firebase/analytics-types/-/analytics-types-0.3.0.tgz#33c3f695313b561d48d18d663a20f20362d3ee7c"
 
-"@firebase/analytics@0.2.18":
-  version "0.2.18"
-  resolved "https://registry.yarnpkg.com/@firebase/analytics/-/analytics-0.2.18.tgz#c6b8b3c5684237b0d8b08a8047cb18e18a671a54"
+"@firebase/analytics@0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@firebase/analytics/-/analytics-0.3.0.tgz#943e73e792ba3f282df4d47aff5a1603b93b37a5"
   dependencies:
-    "@firebase/analytics-types" "0.2.8"
+    "@firebase/analytics-types" "0.3.0"
     "@firebase/component" "0.1.8"
     "@firebase/installations" "0.4.6"
     "@firebase/logger" "0.2.0"
@@ -1008,9 +1008,9 @@
   version "1.10.1"
   resolved "https://registry.yarnpkg.com/@firebase/firestore-types/-/firestore-types-1.10.1.tgz#bf018f9c495f470592de745389474dc1c2960d3f"
 
-"@firebase/firestore@1.12.2":
-  version "1.12.2"
-  resolved "https://registry.yarnpkg.com/@firebase/firestore/-/firestore-1.12.2.tgz#2688c9ef726eed8078bd92414c00b052ae167e03"
+"@firebase/firestore@1.13.0":
+  version "1.13.0"
+  resolved "https://registry.yarnpkg.com/@firebase/firestore/-/firestore-1.13.0.tgz#2638f25b2a3d19cb891a6b334a0dc14aefef5a34"
   dependencies:
     "@firebase/component" "0.1.8"
     "@firebase/firestore-types" "1.10.1"
@@ -3712,16 +3712,16 @@ find-up@^4.0.0, find-up@^4.1.0:
     locate-path "^5.0.0"
     path-exists "^4.0.0"
 
-firebase@7.12.0:
-  version "7.12.0"
-  resolved "https://registry.yarnpkg.com/firebase/-/firebase-7.12.0.tgz#aafaa51f0b081e356c2df670e39f8bd7c2f7d774"
+firebase@7.13.0:
+  version "7.13.0"
+  resolved "https://registry.yarnpkg.com/firebase/-/firebase-7.13.0.tgz#8e1f29c2a029993a616360a0fb396d5b92a6c16e"
   dependencies:
-    "@firebase/analytics" "0.2.18"
+    "@firebase/analytics" "0.3.0"
     "@firebase/app" "0.6.0"
     "@firebase/app-types" "0.6.0"
     "@firebase/auth" "0.14.1"
     "@firebase/database" "0.5.24"
-    "@firebase/firestore" "1.12.2"
+    "@firebase/firestore" "1.13.0"
     "@firebase/functions" "0.4.38"
     "@firebase/installations" "0.4.6"
     "@firebase/messaging" "0.6.10"
