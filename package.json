@@ -48,7 +48,7 @@
     "pretty-quick": "2.0.1",
     "redux-devtools-extension": "2.13.8",
     "redux-saga-test-plan": "4.0.0-beta.3",
-    "ts-jest": "25.4.0",
+    "ts-jest": "25.5.0",
     "tslint": "5.20.1",
     "tslint-config-prettier": "1.18.0",
     "tslint-plugin-prettier": "2.3.0",
