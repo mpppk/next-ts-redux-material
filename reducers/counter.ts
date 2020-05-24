@@ -1,13 +1,13 @@
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
 import {
   counterActionCreators,
-  counterAsyncActionCreators
-} from './actions/counter';
+  counterAsyncActionCreators,
+} from '../actions/counter';
 
-export const exampleInitialState = {
+export const counterInitialState = {
   count: 0,
   isReadyFirebase: false,
-  user: (null as IUser) || null
+  user: (null as IUser) || null,
 };
 
 export interface IUser {
@@ -20,17 +20,17 @@ export interface IUser {
   uid: string;
 }
 
-export type State = typeof exampleInitialState;
+export type CounterState = typeof counterInitialState;
 
-const addCount = (state: State, amount: number) => {
+const addCount = (state: CounterState, amount: number) => {
   return { ...state, count: state.count + amount };
 };
 
-const reducer = reducerWithInitialState(exampleInitialState)
-  .case(counterActionCreators.clickIncrementButton, state => {
+export const counter = reducerWithInitialState(counterInitialState)
+  .case(counterActionCreators.clickIncrementButton, (state) => {
     return addCount(state, 1);
   })
-  .case(counterActionCreators.clickDecrementButton, state => {
+  .case(counterActionCreators.clickDecrementButton, (state) => {
     return addCount(state, -1);
   })
   .case(
@@ -39,5 +39,3 @@ const reducer = reducerWithInitialState(exampleInitialState)
       return addCount(state, payload.result.amount);
     }
   );
-
-export default reducer;
