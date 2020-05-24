@@ -3,7 +3,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { counterActionCreators } from '../actions/counter';
 import Page from '../components/Page';
-import { State } from '../reducers/counter';
+import { State } from '../reducers/reducer';
 
 const useHandlers = () => {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ export const Index: NextPage = () => {
   const handlers = useHandlers();
   const globalState = useSelector((state: State) => ({
     count: state.counter.count,
-    user: state.user
+    user: state.counter.user
   }));
 
   return (

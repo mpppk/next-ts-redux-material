@@ -9,3 +9,4 @@ export const initialState = {
   counter: counterInitialState,
 };
 
+export type State = typeof initialState;
