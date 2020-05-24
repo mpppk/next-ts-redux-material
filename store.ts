@@ -1,7 +1,7 @@
 import { applyMiddleware, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
-import rootReducer, { exampleInitialState } from './reducer';
+import {initialState, reducer} from './reducers/reducer';
 import rootSaga from './sagas/saga';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -14,22 +14,18 @@ const bindMiddleware = middleware => {
   return applyMiddleware(...middleware);
 };
 
-function configureStore(initialState = exampleInitialState) {
+function configureStore(state = initialState) {
   const store = createStore(
-    rootReducer,
-    initialState,
+    reducer,
+    state,
     bindMiddleware([sagaMiddleware])
   );
 
-  // @ts-ignore
-  store.runSagaTask = () => {
-    // FIXME Add type
-    // @ts-ignore
-    store.sagaTask = sagaMiddleware.run(rootSaga); // FIXME Add type
+  (store as any).runSagaTask = () => {
+    (store as any).sagaTask = sagaMiddleware.run(rootSaga); // FIXME Add type
   };
 
-  // @ts-ignore
-  store.runSagaTask(); // FIXME Add type
+  (store as any).runSagaTask(); // FIXME Add type
   return store;
 }
 

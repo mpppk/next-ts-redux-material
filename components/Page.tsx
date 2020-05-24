@@ -1,6 +1,6 @@
 import Typography from '@material-ui/core/Typography/Typography';
 import * as React from 'react';
-import { IUser } from '../reducer';
+import { IUser } from '../reducers/counter';
 import MyAppBar from './AppBar';
 import Counter, { ICounterProps } from './Counter';
 
