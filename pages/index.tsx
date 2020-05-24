@@ -1,3 +1,4 @@
+import { NextPage } from 'next';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { counterActionCreators } from '../actions/counter';
@@ -21,7 +22,7 @@ const useHandlers = () => {
 };
 
 // tslint:disable-next-line variable-name
-export const Index: React.FC = () => {
+export const Index: NextPage = () => {
   const handlers = useHandlers();
   const globalState = useSelector((state: State) => ({
     count: state.count,
@@ -39,12 +40,6 @@ export const Index: React.FC = () => {
       onClickLogout={handlers.empty}
     />
   );
-};
-
-(Index as any).getInitialProps = props => {
-  const { store, isServer } = props.ctx;
-  store.dispatch(counterActionCreators.requestAmountChanging({ amount: 1 }));
-  return { isServer };
 };
 
 export default Index;
