@@ -6,7 +6,6 @@ import {
 
 export const counterInitialState = {
   count: 0,
-  isReadyFirebase: false,
   user: (null as IUser) || null,
 };
 
