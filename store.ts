@@ -1,7 +1,7 @@
+import { Context, createWrapper, MakeStore } from 'next-redux-wrapper';
 import { applyMiddleware, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-
-import {initialState, reducer} from './reducers/reducer';
+import { initialState, reducer, State } from './reducers/reducer';
 import rootSaga from './sagas/saga';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -14,10 +14,10 @@ const bindMiddleware = middleware => {
   return applyMiddleware(...middleware);
 };
 
-function configureStore(state = initialState) {
+const makeStore: MakeStore<State> = (_context: Context) => {
   const store = createStore(
     reducer,
-    state,
+    initialState,
     bindMiddleware([sagaMiddleware])
   );
 
@@ -28,5 +28,4 @@ function configureStore(state = initialState) {
   (store as any).runSagaTask(); // FIXME Add type
   return store;
 }
-
-export default configureStore;
+export const wrapper = createWrapper<State>(makeStore, {debug: true})
