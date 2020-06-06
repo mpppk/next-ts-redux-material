@@ -1,6 +1,9 @@
 require('dotenv').config();
 
 module.exports = {
+  env: {
+    enableReduxWrapperDebugMode: true,
+  },
   publicRuntimeConfig: {
     firebase: {
       apiKey: process.env.FIREBASE_API_KEY,
