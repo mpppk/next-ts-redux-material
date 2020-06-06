@@ -24,20 +24,15 @@ const useHandlers = () => {
 // tslint:disable-next-line variable-name
 export const Index: NextPage = () => {
   const handlers = useHandlers();
-  const globalState = useSelector((state: State) => ({
-    count: state.counter.count,
-    user: state.counter.user
-  }));
+  const count = useSelector((state: State) => state.counter.count);
 
   return (
     <Page
-      user={globalState.user}
-      count={globalState.count}
+      count={count}
       title="Index Page"
       onClickIncrementButton={handlers.clickIncrementButton}
       onClickDecrementButton={handlers.clickDecrementButton}
       onClickIncrementLaterButton={handlers.clickAsyncIncrementButton}
-      onClickLogout={handlers.empty}
     />
   );
 };

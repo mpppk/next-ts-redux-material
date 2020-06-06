@@ -6,18 +6,7 @@ import {
 
 export const counterInitialState = {
   count: 0,
-  user: (null as IUser) || null,
 };
-
-export interface IUser {
-  displayName: string;
-  email: string;
-  emailVerified: boolean;
-  photoURL: string;
-  isAnonymous: boolean;
-  phoneNumber: string | null;
-  uid: string;
-}
 
 export type CounterState = typeof counterInitialState;
 

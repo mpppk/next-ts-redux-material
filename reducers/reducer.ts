@@ -1,9 +1,12 @@
 import { HYDRATE } from 'next-redux-wrapper'
 import { combineReducers } from 'redux';
 import {counter, counterInitialState} from './counter';
+import {global} from './global';
+import { globalInitialState } from './global';
 
 const combinedReducer = combineReducers({
   counter,
+  global,
 });
 
 export const reducer = (state, action) => {
@@ -21,6 +24,7 @@ export const reducer = (state, action) => {
 
 export const initialState = {
   counter: counterInitialState,
+  global: globalInitialState,
 };
 
 export type State = typeof initialState;
