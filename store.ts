@@ -28,4 +28,9 @@ const makeStore: MakeStore<State> = (_context: Context) => {
   (store as any).runSagaTask(); // FIXME Add type
   return store;
 }
-export const wrapper = createWrapper<State>(makeStore, {debug: true})
+
+const isEnableDebugMode = (): boolean => {
+  return process.env.enableReduxWrapperDebugMode as any as boolean;
+}
+
+export const wrapper = createWrapper<State>(makeStore, {debug: isEnableDebugMode()})
