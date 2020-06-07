@@ -12,7 +12,9 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { NextPage } from 'next';
-import React from 'react';
+import React, { useState } from 'react';
+import { globalActionCreators } from '../actions/global';
+import { useActions } from '../hooks';
 
 function Copyright() {
   return (
@@ -47,8 +49,39 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const useComponentState = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  return {
+    email,
+    password,
+    setEmail,
+    setPassword,
+  };
+};
+
+const useHandlers = () => {
+  const componentState = useComponentState();
+  const actionCreators = useActions(globalActionCreators);
+  return {
+    onChangeEmailForm: (e: React.ChangeEvent<HTMLInputElement>) => {
+      componentState.setEmail(e.target.value);
+    },
+    onChangePasswordForm: (e: React.ChangeEvent<HTMLInputElement>) => {
+      componentState.setPassword(e.target.value);
+    },
+    onClickSignInSubmitButton: () => {
+      actionCreators.clickSignInSubmitButton({
+        email: componentState.email,
+        password: componentState.password,
+      });
+    }
+  };
+};
+
 // tslint:disable-next-line variable-name
 export const SignIn: NextPage = () => {
+  const handlers = useHandlers();
   const classes = useStyles();
 
   return (
@@ -63,6 +96,7 @@ export const SignIn: NextPage = () => {
         </Typography>
         <form className={classes.form} noValidate={true}>
           <TextField
+            onChange={handlers.onChangeEmailForm}
             variant="outlined"
             margin="normal"
             required={true}
@@ -74,6 +108,7 @@ export const SignIn: NextPage = () => {
             autoFocus={true}
           />
           <TextField
+            onChange={handlers.onChangePasswordForm}
             variant="outlined"
             margin="normal"
             required={true}
@@ -89,7 +124,7 @@ export const SignIn: NextPage = () => {
             label="Remember me"
           />
           <Button
-            type="submit"
+            onClick={handlers.onClickSignInSubmitButton}
             fullWidth={true}
             variant="contained"
             color="primary"
