@@ -1,4 +1,4 @@
-import { Counter } from '../services/Counter';
+import { Counter } from '../src/services/Counter';
 
 describe('Counter', () => {
   const counter = new Counter();
