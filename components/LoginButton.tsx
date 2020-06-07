@@ -5,8 +5,8 @@ import React from 'react';
 // tslint:disable-next-line variable-name
 const LoginButton: React.FunctionComponent = () => {
   return (
-    <Link href={'/login'}>
-      <Button color="inherit">Login</Button>
+    <Link href={'/signin'}>
+      <Button color="inherit">Sign In</Button>
     </Link>
   );
 };
