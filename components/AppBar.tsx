@@ -9,7 +9,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { IUser } from '../reducers/global';
 import MyDrawer from './drawer/Drawer';
-import LoginButton from './LoginButton';
+import SignInButton from './LoginButton';
 import ProfileButton from './ProfileButton';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -62,7 +62,7 @@ export default function MyAppBar(props: IMyAppBarProps) {
               onClickLogout={props.onClickLogout}
             />
           ) : (
-            <LoginButton />
+            <SignInButton />
           )}
         </Toolbar>
       </AppBar>
