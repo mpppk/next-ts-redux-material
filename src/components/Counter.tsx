@@ -4,22 +4,22 @@ import * as React from 'react';
 
 export interface ICounterProps {
   count: number;
-  onClickIncrementButton: (currentCount: number) => void;
-  onClickDecrementButton: (currentCount: number) => void;
-  onClickIncrementLaterButton: (currentCount: number) => void;
+  onClickIncrementButton: (_: void) => void;
+  onClickDecrementButton: (_: void) => void;
+  onClickIncrementLaterButton: (_: void) => void;
 }
 
 type ClickEvent = React.MouseEvent<HTMLElement, MouseEvent>;
 
 export default (props: ICounterProps) => {
   const handleClickIncrementButton = (_e: ClickEvent) => {
-    props.onClickIncrementButton(props.count);
+    props.onClickIncrementButton();
   };
   const handleClickDecrementButton = (_e: ClickEvent) => {
-    props.onClickDecrementButton(props.count);
+    props.onClickDecrementButton();
   };
   const handleClickIncrementLaterButton = (_e: ClickEvent) => {
-    props.onClickIncrementLaterButton(props.count);
+    props.onClickIncrementLaterButton();
   };
 
   return (
