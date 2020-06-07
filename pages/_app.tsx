@@ -1,3 +1,4 @@
+import { Container } from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline/CssBaseline';
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 import { AppProps } from 'next/app';
@@ -30,7 +31,9 @@ const WrappedApp: FC<AppProps> = ({Component, pageProps}) => {
       {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
       <CssBaseline />
       <MyAppBar user={user} onClickLogout={handlers.logout} />
-      <Component {...pageProps} />
+      <Container>
+        <Component {...pageProps} />
+      </Container>
     </ThemeProvider>
   );
 }
