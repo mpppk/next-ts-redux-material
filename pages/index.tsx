@@ -1,8 +1,9 @@
+import Typography from '@material-ui/core/Typography/Typography';
 import { NextPage } from 'next';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { counterActionCreators } from '../actions/counter';
-import Page from '../components/Page';
+import Counter from '../components/Counter';
 import { State } from '../reducers/reducer';
 
 const useHandlers = () => {
@@ -27,13 +28,17 @@ export const Index: NextPage = () => {
   const count = useSelector((state: State) => state.counter.count);
 
   return (
-    <Page
-      count={count}
-      title="Index Page"
-      onClickIncrementButton={handlers.clickIncrementButton}
-      onClickDecrementButton={handlers.clickDecrementButton}
-      onClickIncrementLaterButton={handlers.clickAsyncIncrementButton}
-    />
+    <div>
+      <Typography variant="h2" gutterBottom={true}>
+        Counter sample
+      </Typography>
+      <Counter
+        count={count}
+        onClickIncrementButton={handlers.clickIncrementButton}
+        onClickDecrementButton={handlers.clickDecrementButton}
+        onClickIncrementLaterButton={handlers.clickAsyncIncrementButton}
+      />
+    </div>
   );
 };
 
