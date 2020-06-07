@@ -6,7 +6,7 @@ import Counter from '../../src/components/Counter';
 
 describe('Counter', () => {
   // tslint:disable-next-line no-empty
-  const emptyButtonHandler = (_nc: number) => {};
+  const emptyButtonHandler = () => {};
   it('has 3 buttons', async () => {
     const wrapper = shallow(
       <Counter
