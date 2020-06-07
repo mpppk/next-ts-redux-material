@@ -2,7 +2,7 @@
 import { Button } from '@material-ui/core';
 import { shallow } from 'enzyme';
 import * as React from 'react';
-import Counter from '../../components/Counter';
+import Counter from '../../src/components/Counter';
 
 describe('Counter', () => {
   // tslint:disable-next-line no-empty

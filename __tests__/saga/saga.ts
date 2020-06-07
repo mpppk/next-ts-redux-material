@@ -1,10 +1,10 @@
 import { testSaga } from 'redux-saga-test-plan';
-import { counterActionCreators } from '../../actions/counter';
+import { counterActionCreators } from '../../src/actions/counter';
 import {
   counterIncrementWorker,
   counterIncrementWorkerWrapper,
   watchIncrementAsync
-} from '../../sagas/counter';
+} from '../../src/sagas/counter';
 
 describe('sagas', () => {
   it('handle clickAsyncIncrementButton action', async () => {
