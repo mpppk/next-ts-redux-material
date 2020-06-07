@@ -1,7 +1,7 @@
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
 
 export const globalInitialState = {
-  user: (null as IUser) || null,
+  user: (null as IUser | null),
 };
 
 export interface IUser {

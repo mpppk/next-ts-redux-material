@@ -1,5 +1,5 @@
 import { HYDRATE } from 'next-redux-wrapper'
-import { combineReducers } from 'redux';
+import { AnyAction, combineReducers, Reducer } from 'redux';
 import {counter, counterInitialState} from './counter';
 import {global} from './global';
 import { globalInitialState } from './global';
@@ -9,14 +9,12 @@ const combinedReducer = combineReducers({
   global,
 });
 
-export const reducer = (state, action) => {
+export const reducer: Reducer<State, AnyAction> = (state, action) => {
   if (action.type === HYDRATE) {
-    const nextState = {
+    return {
       ...state, // use previous state
       ...action.payload, // apply delta from hydration
     }
-    if (state.count) { nextState.count = state.count } // preserve count value on client side navigation
-    return nextState
   } else {
     return combinedReducer(state, action)
   }
