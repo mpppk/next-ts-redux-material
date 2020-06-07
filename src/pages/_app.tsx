@@ -7,8 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { globalAsyncActionCreators } from '../actions/global';
 import MyAppBar from '../components/AppBar';
 import { State } from '../reducers/reducer';
-import theme from '../theme';
 import { wrapper } from '../store';
+import theme from '../theme';
 
 const useHandlers = () => {
   const dispatch = useDispatch();
