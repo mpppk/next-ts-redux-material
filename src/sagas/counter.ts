@@ -11,7 +11,7 @@ export const counterIncrementWorker = bindAsyncAction(
 )(function*(payload: IRequestAmountChangingWithSleepPayload) {
   yield delay(payload.sleep);
   return { amount: payload.amount };
-} as any); // FIXME remove any
+});
 
 export const counterIncrementWorkerWrapper = () =>
   counterIncrementWorker({ amount: 1, sleep: 1000 });

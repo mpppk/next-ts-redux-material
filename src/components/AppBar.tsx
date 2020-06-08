@@ -7,7 +7,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/styles';
 import * as React from 'react';
 import { useState } from 'react';
-import { IUser } from '../reducers/global';
+import { User } from '../reducers/global';
 import MyDrawer from './drawer/Drawer';
 import SignInButton from './LoginButton';
 import ProfileButton from './ProfileButton';

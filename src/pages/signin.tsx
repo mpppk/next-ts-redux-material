@@ -1,7 +1,9 @@
+import { CircularProgress } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
+import { green } from '@material-ui/core/colors';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -13,8 +15,10 @@ import Typography from '@material-ui/core/Typography';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { NextPage } from 'next';
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { globalActionCreators } from '../actions/global';
 import { useActions } from '../hooks';
+import { State } from '../reducers/reducer';
 
 function Copyright() {
   return (
@@ -34,6 +38,14 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
     margin: theme.spacing(1),
   },
+  buttonProgress: {
+    color: green[500],
+    left: '50%',
+    marginLeft: -12,
+    marginTop: -12+4,
+    position: 'absolute',
+    top: '50%',
+  },
   form: {
     marginTop: theme.spacing(1),
     width: '100%', // Fix IE 11 issue.
@@ -46,6 +58,10 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+  },
+  wrapper: {
+    margin: theme.spacing(1),
+    position: 'relative',
   },
 }));
 
@@ -81,6 +97,9 @@ const useHandlers = () => {
 
 // tslint:disable-next-line variable-name
 export const SignIn: NextPage = () => {
+  const state = useSelector((s: State) => ({
+    waitingSignIn: s.global.waitingSignIn,
+  }))
   const handlers = useHandlers();
   const classes = useStyles();
 
@@ -97,6 +116,7 @@ export const SignIn: NextPage = () => {
         <form className={classes.form} noValidate={true}>
           <TextField
             onChange={handlers.onChangeEmailForm}
+            disabled={state.waitingSignIn}
             variant="outlined"
             margin="normal"
             required={true}
@@ -109,6 +129,7 @@ export const SignIn: NextPage = () => {
           />
           <TextField
             onChange={handlers.onChangePasswordForm}
+            disabled={state.waitingSignIn}
             variant="outlined"
             margin="normal"
             required={true}
@@ -120,18 +141,22 @@ export const SignIn: NextPage = () => {
             autoComplete="current-password"
           />
           <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
+            control={<Checkbox value="remember" color="primary" disabled={state.waitingSignIn}/>}
             label="Remember me"
           />
-          <Button
-            onClick={handlers.onClickSignInSubmitButton}
-            fullWidth={true}
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign In
-          </Button>
+          <div className={classes.wrapper}>
+            <Button
+              disabled={state.waitingSignIn}
+              onClick={handlers.onClickSignInSubmitButton}
+              fullWidth={true}
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Sign In
+            </Button>
+            {state.waitingSignIn && <CircularProgress size={24} className={classes.buttonProgress} />}
+          </div>
           <Grid container={true}>
             <Grid item={true} xs={true}>
               <Link href="#" variant="body2">

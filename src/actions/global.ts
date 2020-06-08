@@ -1,10 +1,20 @@
 import actionCreatorFactory from 'typescript-fsa';
+import { User } from '../models/models';
 
 const globalActionCreatorFactory = actionCreatorFactory('GLOBAL');
 
 interface SignInRequest {
-  email: string
-  password: string
+  email: string;
+  password: string;
+}
+
+interface SignInResult {
+  jwt: string; // FIXME
+  user: User;
+}
+
+interface SignInError {
+  error: Error;
 }
 
 export const globalActionCreators = {
@@ -14,5 +24,10 @@ export const globalActionCreators = {
 };
 
 export const globalAsyncActionCreators = {
-  logout: globalActionCreatorFactory.async('LOGOUT')
+  signIn: globalActionCreatorFactory.async<
+    SignInRequest,
+    SignInResult,
+    SignInError
+  >('SIGN_IN'),
+  signOut: globalActionCreatorFactory.async('SIGN_OUT'),
 };
