@@ -33,7 +33,7 @@ describe('Sign in and sign out', () => {
     cy.get('button#submit-sign-in-request-button').contains('Sign In').click()
     // move to top page when singed inn
     cy.url().should('not.include', '/signin')
-    cy.get('img[alt="Avatar Icon"').click()
+    cy.get('*[aria-label="user profile avatar"]').click()
     cy.contains('Logout').click()
     cy.contains('Sign In')
   })
