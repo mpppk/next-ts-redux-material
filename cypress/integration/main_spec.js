@@ -25,11 +25,16 @@ describe('Show About page', () => {
   })
 })
 
-describe('Show Sign in page', () => {
+describe('Sign in and sign out', () => {
   it('show sign in page', () => {
     cy.visit('http://localhost:3000')
     cy.contains('Sign In').click()
     cy.url().should('include', '/signin')
-    cy.get('button').contains('Sign In')
+    cy.get('button#submit-sign-in-request-button').contains('Sign In').click()
+    // move to top page when singed inn
+    cy.url().should('not.include', '/signin')
+    cy.get('img[alt="Avatar Icon"').click()
+    cy.contains('Logout').click()
+    cy.contains('Sign In')
   })
 })

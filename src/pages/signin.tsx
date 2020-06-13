@@ -1,7 +1,9 @@
+import { CircularProgress } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
+import { green } from '@material-ui/core/colors';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -12,7 +14,12 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { NextPage } from 'next';
-import React from 'react';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { globalActionCreators } from '../actions/global';
+import { useActions } from '../hooks';
+import { State } from '../reducers/reducer';
 
 function Copyright() {
   return (
@@ -32,6 +39,14 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
     margin: theme.spacing(1),
   },
+  buttonProgress: {
+    color: green[500],
+    left: '50%',
+    marginLeft: -12,
+    marginTop: -12+4,
+    position: 'absolute',
+    top: '50%',
+  },
   form: {
     marginTop: theme.spacing(1),
     width: '100%', // Fix IE 11 issue.
@@ -45,10 +60,63 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  wrapper: {
+    margin: theme.spacing(1),
+    position: 'relative',
+  },
 }));
+
+const useComponentState = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  return {
+    email,
+    password,
+    setEmail,
+    setPassword,
+  };
+};
+
+const useHandlers = () => {
+  const componentState = useComponentState();
+  const actionCreators = useActions(globalActionCreators);
+  return {
+    onChangeEmailForm: (e: React.ChangeEvent<HTMLInputElement>) => {
+      componentState.setEmail(e.target.value);
+    },
+    onChangePasswordForm: (e: React.ChangeEvent<HTMLInputElement>) => {
+      componentState.setPassword(e.target.value);
+    },
+    onClickSignInSubmitButton: () => {
+      actionCreators.clickSignInSubmitButton({
+        email: componentState.email,
+        password: componentState.password,
+      });
+    }
+  };
+};
+
+const useSignInRouter = () => {
+  const isSignedIn = useSelector((s: State) => !!s.global.jwt)
+  const router = useRouter();
+  useEffect(() => {
+    if (isSignedIn) {
+      router.push('/');
+    }
+  }, [isSignedIn])
+}
+
 
 // tslint:disable-next-line variable-name
 export const SignIn: NextPage = () => {
+  const state = useSelector((s: State) => ({
+    signedIn: !!s.global.jwt,
+    waitingSignIn: s.global.waitingSignIn,
+  }))
+
+  useSignInRouter();
+
+  const handlers = useHandlers();
   const classes = useStyles();
 
   return (
@@ -63,6 +131,8 @@ export const SignIn: NextPage = () => {
         </Typography>
         <form className={classes.form} noValidate={true}>
           <TextField
+            onChange={handlers.onChangeEmailForm}
+            disabled={state.waitingSignIn}
             variant="outlined"
             margin="normal"
             required={true}
@@ -74,6 +144,8 @@ export const SignIn: NextPage = () => {
             autoFocus={true}
           />
           <TextField
+            onChange={handlers.onChangePasswordForm}
+            disabled={state.waitingSignIn}
             variant="outlined"
             margin="normal"
             required={true}
@@ -85,18 +157,23 @@ export const SignIn: NextPage = () => {
             autoComplete="current-password"
           />
           <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
+            control={<Checkbox value="remember" color="primary" disabled={state.waitingSignIn}/>}
             label="Remember me"
           />
-          <Button
-            type="submit"
-            fullWidth={true}
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign In
-          </Button>
+          <div className={classes.wrapper}>
+            <Button
+              id="submit-sign-in-request-button"
+              disabled={state.waitingSignIn}
+              onClick={handlers.onClickSignInSubmitButton}
+              fullWidth={true}
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Sign In
+            </Button>
+            {state.waitingSignIn && <CircularProgress size={24} className={classes.buttonProgress} />}
+          </div>
           <Grid container={true}>
             <Grid item={true} xs={true}>
               <Link href="#" variant="body2">
