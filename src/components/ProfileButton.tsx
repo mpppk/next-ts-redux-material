@@ -40,6 +40,7 @@ const ProfileButton: React.FunctionComponent<IProfileButtonProps> = props => {
         onClick={handleClickProfileButton}
       >
         <Avatar
+          aria-label='user profile avatar'
           alt="Avatar Icon"
           src={user.photoURL}
           className={classes.avatar}
