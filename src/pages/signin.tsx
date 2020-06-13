@@ -162,6 +162,7 @@ export const SignIn: NextPage = () => {
           />
           <div className={classes.wrapper}>
             <Button
+              id="submit-sign-in-request-button"
               disabled={state.waitingSignIn}
               onClick={handlers.onClickSignInSubmitButton}
               fullWidth={true}
