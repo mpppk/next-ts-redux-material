@@ -6,18 +6,11 @@ import {
   globalActionCreators,
   globalAsyncActionCreators,
 } from '../actions/global';
+import { requestSignIn } from '../services/session';
 
 export const signInWorker = bindAsyncAction(globalAsyncActionCreators.signIn)(
-  function* (_payload) {
-    yield delay(1000);
-    return {
-      jwt: 'xxx',
-      user: {
-        displayName: 'user-name',
-        photoURL: 'https://i.gyazo.com/f335ba575e7009ab424dea80ac992e9f.jpg',
-        uid: 1,
-      },
-    };
+  function* (payload) {
+    return yield call(requestSignIn, payload.email, payload.password);
   }
 );
 
