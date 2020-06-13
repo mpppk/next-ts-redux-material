@@ -5,7 +5,7 @@ import { AppProps } from 'next/app';
 import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { globalAsyncActionCreators } from '../actions/global';
-import MyAppBar from '../components/AppBar';
+import {MyAppBar} from '../components/AppBar';
 import { State } from '../reducers/reducer';
 import { wrapper } from '../store';
 import theme from '../theme';
@@ -14,7 +14,7 @@ const useHandlers = () => {
   const dispatch = useDispatch();
   return {
     logout: () => {
-      dispatch(globalAsyncActionCreators.logout.started(undefined));
+      dispatch(globalAsyncActionCreators.signOut.started(undefined));
     },
     empty: () => {} //tslint:disable-line
   };

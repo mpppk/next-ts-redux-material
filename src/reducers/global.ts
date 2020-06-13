@@ -3,7 +3,7 @@ import { globalAsyncActionCreators } from '../actions/global';
 import { User } from '../models/models';
 
 export const globalInitialState = {
-  jwt: '', // FIXME
+  jwt: null as string | null, // FIXME
   user: null as User | null,
   waitingSignIn: false,
 };
@@ -14,5 +14,18 @@ export const global = reducerWithInitialState(globalInitialState)
     return { ...state, waitingSignIn: true };
   })
   .case(globalAsyncActionCreators.signIn.done, (state, payload) => {
-    return { ...state, jwt: payload.result.jwt, waitingSignIn: false };
+    return {
+      ...state,
+      jwt: payload.result.jwt,
+      user: payload.result.user,
+      waitingSignIn: false,
+    };
+  })
+  .case(globalAsyncActionCreators.signOut.done, (state) => {
+    return {
+      ...state,
+      jwt: null,
+      user: null,
+      waitingSignIn: false,
+    };
   });

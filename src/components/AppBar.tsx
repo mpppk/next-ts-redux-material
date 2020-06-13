@@ -7,7 +7,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/styles';
 import * as React from 'react';
 import { useState } from 'react';
-import { User } from '../reducers/global';
+import { User } from '../models/models';
 import MyDrawer from './drawer/Drawer';
 import SignInButton from './LoginButton';
 import ProfileButton from './ProfileButton';
@@ -25,12 +25,12 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 interface IMyAppBarProps {
-  user: IUser | null;
+  user: User | null;
   onClickLogout: () => void;
 }
 
 // tslint:disable-next-line variable-name
-export default function MyAppBar(props: IMyAppBarProps) {
+export function MyAppBar(props: IMyAppBarProps) {
   const classes = useStyles(undefined);
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const handleDrawer = (open: boolean) => () => setDrawerOpen(open);

@@ -14,7 +14,8 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { NextPage } from 'next';
-import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { globalActionCreators } from '../actions/global';
 import { useActions } from '../hooks';
@@ -95,11 +96,26 @@ const useHandlers = () => {
   };
 };
 
+const useSignInRouter = () => {
+  const isSignedIn = useSelector((s: State) => !!s.global.jwt)
+  const router = useRouter();
+  useEffect(() => {
+    if (isSignedIn) {
+      router.push('/');
+    }
+  }, [isSignedIn])
+}
+
+
 // tslint:disable-next-line variable-name
 export const SignIn: NextPage = () => {
   const state = useSelector((s: State) => ({
+    signedIn: !!s.global.jwt,
     waitingSignIn: s.global.waitingSignIn,
   }))
+
+  useSignInRouter();
+
   const handlers = useHandlers();
   const classes = useStyles();
 
