@@ -1,36 +1,20 @@
-import { Context, createWrapper, MakeStore } from 'next-redux-wrapper';
-import { applyMiddleware, createStore, Middleware } from 'redux';
-import createSagaMiddleware from 'redux-saga';
-import { initialState, reducer, State } from './reducers/reducer';
-import rootSaga from './sagas/saga';
-
-const sagaMiddleware = createSagaMiddleware();
-
-const bindMiddleware = (middlewareList: Middleware[]) => {
-  if (process.env.NODE_ENV !== 'production') {
-    const { composeWithDevTools } = require('redux-devtools-extension');
-    return composeWithDevTools(applyMiddleware(...middlewareList));
-  }
-  return applyMiddleware(...middlewareList);
-};
-
-const makeStore: MakeStore<State> = (_context: Context) => {
-  const store = createStore(
-    reducer,
-    initialState,
-    bindMiddleware([sagaMiddleware])
-  );
-
-  (store as any).runSagaTask = () => {
-    (store as any).sagaTask = sagaMiddleware.run(rootSaga); // FIXME Add type
-  };
-
-  (store as any).runSagaTask(); // FIXME Add type
-  return store;
-}
+import { createWrapper } from 'next-redux-wrapper';
+import { configureStore } from '@reduxjs/toolkit';
+import counter from './features/counter/counterSlice';
 
 const isEnableDebugMode = (): boolean => {
-  return process.env.enableReduxWrapperDebugMode as any as boolean;
-}
+  return (process.env.enableReduxWrapperDebugMode as any) as boolean;
+};
 
-export const wrapper = createWrapper<State>(makeStore, {debug: isEnableDebugMode()})
+const store = configureStore({
+  reducer: { counter },
+});
+
+export const wrapper = createWrapper(() => store, {
+  debug: isEnableDebugMode(),
+});
+
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootState = ReturnType<typeof store.getState>;
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof store.dispatch;
