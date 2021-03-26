@@ -3,13 +3,15 @@ import { NextPage } from 'next';
 import React from 'react';
 import Counter from '../features/counter/Counter';
 import { useActions, useAppSelector } from "../hooks";
-import { counterSlice, selectCount } from "../features/counter/counterSlice";
+import { counterSlice, incrementLater, selectCount } from "../features/counter/counterSlice";
 
 // tslint:disable-next-line variable-name
 export const Index: NextPage = () => {
-  const handlers = useActions(counterSlice.actions);
+  const handlers = useActions({
+    ...counterSlice.actions,
+    incrementLater,
+  });
   const count = useAppSelector(selectCount);
-  // const count = useSelector((state: State) => state.counter.count);
 
   return (
     <div>
@@ -20,7 +22,7 @@ export const Index: NextPage = () => {
         count={count}
         onClickIncrementButton={handlers.increment}
         onClickDecrementButton={handlers.decrement}
-        onClickIncrementLaterButton={handlers.incrementByAmount}
+        onClickIncrementLaterButton={handlers.incrementLater}
       />
     </div>
   );
