@@ -2,13 +2,10 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
 
 const sleep = async (ms: number) => await new Promise((r) => setTimeout(r, ms));
-export const incrementLater = createAsyncThunk(
-  'incrementLater',
-  async (_thunkAPI) => {
-    await sleep(1000);
-    return 1;
-  }
-);
+export const incrementLater = createAsyncThunk('incrementLater', async () => {
+  await sleep(1000);
+  return 1;
+});
 
 export const counterSlice = createSlice({
   name: 'counter',
@@ -38,6 +35,6 @@ export const counterSlice = createSlice({
 });
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectCount = (state: RootState) => state.counter.value;
+export const selectCount = (state: RootState): number => state.counter.value;
 
 export default counterSlice.reducer;

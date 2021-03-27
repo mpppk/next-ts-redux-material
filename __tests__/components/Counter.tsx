@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Counter from '../../src/features/counter/Counter';
+import { Counter } from "../../src/features/counter/Counter";
 import { fireEvent, render, screen, } from "@testing-library/react";
 
 test('loads and displays greeting', async () => {
