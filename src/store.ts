@@ -3,7 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import counter from './features/counter/counterSlice';
 
 const isEnableDebugMode = (): boolean => {
-  return (process.env.enableReduxWrapperDebugMode as any) as boolean;
+  return (process.env.enableReduxWrapperDebugMode as unknown) as boolean;
 };
 
 const store = configureStore({

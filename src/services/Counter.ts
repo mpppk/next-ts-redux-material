@@ -1,9 +1,9 @@
 export class Counter {
   public count = 0;
-  public increment() {
+  public increment(): void {
     this.count++;
   }
-  public decrement() {
+  public decrement(): void {
     this.count--;
   }
 }

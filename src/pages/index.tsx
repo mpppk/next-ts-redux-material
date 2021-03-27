@@ -1,7 +1,7 @@
 import Typography from '@material-ui/core/Typography/Typography';
 import { NextPage } from 'next';
 import React from 'react';
-import Counter from '../features/counter/Counter';
+import { Counter } from "../features/counter/Counter";
 import { useActions, useAppSelector } from "../hooks";
 import { counterSlice, incrementLater, selectCount } from "../features/counter/counterSlice";
 

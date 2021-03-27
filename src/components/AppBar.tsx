@@ -30,7 +30,7 @@ interface IMyAppBarProps {
 }
 
 // tslint:disable-next-line variable-name
-export function MyAppBar(props: IMyAppBarProps) {
+export const MyAppBar: React.FC<IMyAppBarProps> = (props) => {
   const classes = useStyles(undefined);
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const handleDrawer = (open: boolean) => () => setDrawerOpen(open);

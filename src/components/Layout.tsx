@@ -29,6 +29,7 @@ const Layout: React.FunctionComponent<IProps> = ({
       </nav>
     </header>
     {children}
+    {/* eslint-disable-next-line react/no-unescaped-entities */}
     <footer>I'm here to stay</footer>
   </div>
 );

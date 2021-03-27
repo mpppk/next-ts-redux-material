@@ -11,7 +11,7 @@ export interface ICounterProps {
 
 type ClickEvent = React.MouseEvent<HTMLElement, MouseEvent>;
 
-export default (props: ICounterProps) => {
+export const Counter: React.FC<ICounterProps> = (props) => {
   const handleClickIncrementButton = (_e: ClickEvent) => {
     props.onClickIncrementButton();
   };

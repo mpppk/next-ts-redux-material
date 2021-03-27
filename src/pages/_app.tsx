@@ -9,12 +9,11 @@ import theme from '../theme';
 import { User } from "../models/models";
 
 const useHandlers = () => {
-  // const dispatch = useDispatch();
   return {
-    logout: () => {
-      // dispatch(globalAsyncActionCreators.signOut.started(undefined));
-    },
-    empty: () => {} //tslint:disable-line
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    logout: () => {},
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    empty: () => {}
   };
 };
 
