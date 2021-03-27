@@ -1,18 +1,15 @@
 # Next.js + TypeScript + Redux + Material-UI Template
 
-[![CircleCI](https://circleci.com/gh/mpppk/next-ts-redux-material.svg?style=svg)](https://circleci.com/gh/mpppk/next-ts-redux-material)
+![main](https://github.com/mpppk/next-ts-redux-material/workflows/CI/badge.svg)
 
 A frontend template repository that be consisted of
 
 - [Next.js](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Redux](https://redux.js.org/) + [Redux-Saga](https://redux-saga.js.org/)
+- [Redux](https://redux.js.org/) with [Redux Toolkit](https://redux-toolkit.js.org/)
 - [Material UI](https://material-ui.com/)
-
-and
-
-- Jest + enzyme for testing
-- tslint + prettier + husky for formatting (TODO: migrate to eslint)
+- [Jest](https://jestjs.io/) / [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) / [cypress](https://www.cypress.io/) for testing
+- [eslint](https://eslint.org/) / [prettier](https://prettier.io/) / [husky](https://github.com/typicode/husky) for formatting
 
 ## Installation
 
