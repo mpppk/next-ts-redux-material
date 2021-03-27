@@ -6,3 +6,4 @@ out
 *.cache
 .env
 cypress/screenshots/
+.DS_Store
