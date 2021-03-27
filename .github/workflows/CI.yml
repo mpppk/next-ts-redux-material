@@ -19,7 +19,7 @@ jobs:
       - name: yarn install, build, and test
         run: |
           yarn install
-          yarn tslint
+          yarn lint
           yarn test
           yarn build
         env:

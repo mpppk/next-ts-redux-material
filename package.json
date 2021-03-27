@@ -9,8 +9,7 @@
     "type-check": "tsc",
     "pretty-quick": "pretty-quick",
     "precommit": "pretty-quick --staged",
-    "tslint:prettier-check": "tslint-config-prettier-check ./tslint.json",
-    "tslint": "tslint -c tslint.json 'src/**/*.ts' 'src/**/*.tsx' 'test/**/*.ts'",
+    "lint": "eslint src",
     "export": "yarn build && next export",
     "cypress:open": "cypress open"
   },
