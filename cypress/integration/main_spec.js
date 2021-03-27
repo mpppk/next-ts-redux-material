@@ -24,17 +24,3 @@ describe('Show About page', () => {
     cy.get('h2:first-of-type').should('have.text', 'About')
   })
 })
-
-describe('Sign in and sign out', () => {
-  it('show sign in page', () => {
-    cy.visit('http://localhost:3000')
-    cy.contains('Sign In').click()
-    cy.url().should('include', '/signin')
-    cy.get('button#submit-sign-in-request-button').contains('Sign In').click()
-    // move to top page when singed inn
-    cy.url().should('not.include', '/signin')
-    cy.get('*[aria-label="user profile avatar"]').click()
-    cy.contains('Logout').click()
-    cy.contains('Sign In')
-  })
-})
