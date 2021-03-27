@@ -7,11 +7,11 @@
     "build": "next build",
     "start": "next start",
     "type-check": "tsc",
-    "pretty-quick": "pretty-quick",
-    "precommit": "pretty-quick --staged",
+    "pretty-quick": "pretty-quick --staged",
     "lint": "eslint src",
     "export": "yarn build && next export",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@material-ui/core": "4.11.3",
